@@ -4,7 +4,7 @@ vendor_name		VARCHAR(20) PRIMARY KEY,
 country			VARCHAR(20),
 delivery_method	VARCHAR(20),
 delivery_time	TINYINT	NOT NULL,
-CHECK delivery_method IN('truck','train','airplane','boat'))
+CHECK (delivery_method IN('truck','train','airplane','boat')))
 
 CREATE TABLE Category(
 type			VARCHAR(20) PRIMARY KEY,
@@ -66,8 +66,8 @@ date_time		SMALLDATETIME NOT NULL,
 PRIMARY KEY (UPC_code,customer_id,store_id),
 FOREIGN KEY (UPC_code) REFERENCES Product,
 FOREIGN KEY (customer_id) REFERENCES Customer,
-FOREIGN KEY (store_id) REFERENCES Store
-CHECK quantity > 0)
+FOREIGN KEY (store_id) REFERENCES Store,
+CHECK (quantity > 0))
 
 CREATE TABLE Supplies(
 vendor_name		VARCHAR(20),
