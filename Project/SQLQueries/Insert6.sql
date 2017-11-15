@@ -1,0 +1,10 @@
+﻿INSERT INTO Store(store_id) VALUES (0);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('10:00:00', '14:00:00', 1000, 1);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('9:00:00', '22:00:00', 10000, 2);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('9:30:00', '21:30:00', 10000, 3);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('9:00:00', '21:00:00', 45000, 4);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('14:00:00', '22:30:00', 5000, 5);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('8:30:00', '22:00:00', 50000, 6);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('8:30:00', '21:00:00', 55000, 7);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('8:30:00', '18:30:00', 6000, 8);
+INSERT INTO Store(opens, closes, max_inventory, address_id) VALUES ('8:30:00', '22:00:00', 30000, 9);
