@@ -16,6 +16,7 @@ namespace Project
     {
         SqlConnection connection;
         public string storeID { get; set; }
+        public string storeLocation { get; set; }
         public string connectionString { get; set; }
 
         public selectStore()
@@ -30,7 +31,8 @@ namespace Project
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
-            this.storeID = cityList.SelectedValue.ToString();
+            //igual aquí puedo meter un query para que devuelva el storeID
+            this.storeID = cityList.SelectedValue.ToString() + "\n" + streetList.SelectedValue.ToString();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -45,9 +47,34 @@ namespace Project
                 adapter.Fill(cities);
 
                 cityList.DisplayMember = "city";
-                cityList.ValueMember = "store_id";
+                cityList.ValueMember = "city";
+                //cityList.ValueMember = "store_id";
                 cityList.DataSource = cities;
             }
+        }
+
+        private void populateStreetList()
+        {
+            string query = "select street from Address inner join Store on Store.address_id = Address.address_id where city=@cityName";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@cityName", cityList.SelectedValue);
+                DataTable streets = new DataTable();
+                adapter.Fill(streets);
+
+                streetList.DisplayMember = "street";
+                streetList.ValueMember = "street";
+                streetList.DataSource = streets;
+            }
+        }
+
+        private void cityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            populateStreetList();
+
         }
     }
 }

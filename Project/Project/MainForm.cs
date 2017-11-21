@@ -16,6 +16,7 @@ namespace Project
     {
         string connectionString;
         string storeID;
+        //string storeLocation;
 
         public FormMain()
         {
@@ -33,9 +34,16 @@ namespace Project
                 if (result == DialogResult.OK)
                 {
                     storeID = ss1.storeID;
+                    //storeLocation = ss1.storeLocation;
                 }
             }
             store_lbl.Text = storeID;
+            //storeLocation_lbl.Text = storeLocation;
+        }
+
+        private void employee_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

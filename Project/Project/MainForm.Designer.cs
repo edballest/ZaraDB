@@ -44,6 +44,7 @@
             this.employee_btn.TabIndex = 0;
             this.employee_btn.Text = "EMPLOYEE";
             this.employee_btn.UseVisualStyleBackColor = true;
+            this.employee_btn.Click += new System.EventHandler(this.employee_btn_Click);
             // 
             // logIn_btn
             // 
@@ -84,7 +85,7 @@
             // store_lbl
             // 
             this.store_lbl.AutoSize = true;
-            this.store_lbl.Location = new System.Drawing.Point(337, 11);
+            this.store_lbl.Location = new System.Drawing.Point(558, 29);
             this.store_lbl.Name = "store_lbl";
             this.store_lbl.Size = new System.Drawing.Size(0, 13);
             this.store_lbl.TabIndex = 5;
