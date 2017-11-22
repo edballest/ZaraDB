@@ -59,6 +59,7 @@
             this.streetList.Name = "streetList";
             this.streetList.Size = new System.Drawing.Size(212, 225);
             this.streetList.TabIndex = 3;
+            this.streetList.SelectedIndexChanged += new System.EventHandler(this.streetList_SelectedIndexChanged);
             // 
             // selectStore
             // 

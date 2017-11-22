@@ -15,8 +15,8 @@ namespace Project
     public partial class FormMain : Form
     {
         string connectionString;
-        string storeID;
-        //string storeLocation;
+        //string storeID;
+        string storeLocation;
 
         public FormMain()
         {
@@ -33,12 +33,12 @@ namespace Project
                 var result = ss1.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    storeID = ss1.storeID;
-                    //storeLocation = ss1.storeLocation;
+                    storeLocation = ss1.storeLocation;
+                    
                 }
             }
-            store_lbl.Text = storeID;
-            //storeLocation_lbl.Text = storeLocation;
+            store_lbl.Text = storeLocation;
+            
         }
 
         private void employee_btn_Click(object sender, EventArgs e)

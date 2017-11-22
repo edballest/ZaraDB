@@ -15,8 +15,10 @@ namespace Project
     public partial class selectStore : Form
     {
         SqlConnection connection;
-        public string storeID { get; set; }
-        //public string storeLocation { get; set; }
+        //public string storeID { get; set; }
+        public string storeLocation { get; set; }
+        public string storeCity { get; set; }
+        public string storeStreet { get; set; }
         public string connectionString { get; set; }
 
         public selectStore()
@@ -32,7 +34,9 @@ namespace Project
         private void OK_btn_Click(object sender, EventArgs e)
         {
             //igual aquí puedo meter un query para que devuelva el storeID
-            this.storeID = cityList.SelectedValue.ToString() + "\n" + streetList.SelectedValue.ToString();
+            this.storeLocation = cityList.SelectedValue.ToString() + "\n" + streetList.SelectedValue.ToString();
+            this.storeCity = cityList.SelectedValue.ToString();
+            this.storeStreet = streetList.SelectedValue.ToString();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -43,13 +47,6 @@ namespace Project
             using (connection = new SqlConnection(connectionString))
             using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
             {
-                //DataTable StoreId = new DataTable();
-                //adapter.Fill(StoreId);
-                //cityList.DisplayMember = "city";
-                //cityList.ValueMember = "store_id";
-                ////cityList.ValueMember = "store_id";
-                //cityList.DataSource = StoreId;
-                //this.storeLocation = cityList.SelectedValue.ToString();
 
                 DataTable cities = new DataTable();
                 adapter.Fill(cities);
@@ -84,6 +81,11 @@ namespace Project
         {
             populateStreetList();
 
+        }
+
+        private void streetList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

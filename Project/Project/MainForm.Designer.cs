@@ -34,7 +34,6 @@
             this.checkOut_btn = new System.Windows.Forms.Button();
             this.catalog_btn = new System.Windows.Forms.Button();
             this.store_lbl = new System.Windows.Forms.Label();
-            this.storeLocation_lbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // employee_btn
@@ -91,21 +90,11 @@
             this.store_lbl.Size = new System.Drawing.Size(0, 13);
             this.store_lbl.TabIndex = 5;
             // 
-            // storeLocation_lbl
-            // 
-            this.storeLocation_lbl.AutoSize = true;
-            this.storeLocation_lbl.Location = new System.Drawing.Point(314, 28);
-            this.storeLocation_lbl.Name = "storeLocation_lbl";
-            this.storeLocation_lbl.Size = new System.Drawing.Size(76, 13);
-            this.storeLocation_lbl.TabIndex = 6;
-            this.storeLocation_lbl.Text = "Store Location";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 700);
-            this.Controls.Add(this.storeLocation_lbl);
             this.Controls.Add(this.store_lbl);
             this.Controls.Add(this.catalog_btn);
             this.Controls.Add(this.checkOut_btn);
@@ -128,7 +117,6 @@
         private System.Windows.Forms.Button checkOut_btn;
         private System.Windows.Forms.Button catalog_btn;
         private System.Windows.Forms.Label store_lbl;
-        private System.Windows.Forms.Label storeLocation_lbl;
     }
 }
 
