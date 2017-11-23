@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="catalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catalog.Designer.cs">
+      <DependentUpon>catalog.cs</DependentUpon>
+    </Compile>
     <Compile Include="logIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ZaraDBDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="catalog.resx">
+      <DependentUpon>catalog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>
     </EmbeddedResource>
