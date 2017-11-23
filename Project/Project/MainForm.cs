@@ -45,5 +45,17 @@ namespace Project
         {
 
         }
+
+        private void logIn_btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using(logIn login = new logIn())
+            {
+                login.connectionString = connectionString;
+                login.ShowDialog();
+                
+            }
+
+        }
     }
 }
