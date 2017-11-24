@@ -120,7 +120,7 @@ namespace Project
 
         private void descriptionList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = "select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where Inventory.store_id=Store.store_id and city=storeCity and street=@streetName and UPC_code=@UPC_code";
+            string query = "select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where (Inventory.store_id=Store.store_id and city=@storeCity and street=@streetName and UPC_code=@UPC_code)";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -132,9 +132,9 @@ namespace Project
                 command.Parameters.AddWithValue("@streetName", storeStreet);
                 
                 //ESTO NO FUNCIONA
-                //price = command.ExecuteScalar().ToString();
+                price = command.ExecuteScalar().ToString();
                 connection.Close();
-                //price_lbl.Text = price;
+                price_lbl.Text = price;
             }
 
         }
