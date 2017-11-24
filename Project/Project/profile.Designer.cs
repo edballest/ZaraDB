@@ -41,6 +41,7 @@
             this.creditCard_btn.TabIndex = 0;
             this.creditCard_btn.Text = "Edit Credit Cards";
             this.creditCard_btn.UseVisualStyleBackColor = true;
+            this.creditCard_btn.Click += new System.EventHandler(this.creditCard_btn_Click);
             // 
             // editProf_btn
             // 
@@ -50,6 +51,7 @@
             this.editProf_btn.TabIndex = 1;
             this.editProf_btn.Text = "Edit Profile";
             this.editProf_btn.UseVisualStyleBackColor = true;
+            this.editProf_btn.Click += new System.EventHandler(this.editProf_btn_Click);
             // 
             // name_lbl
             // 

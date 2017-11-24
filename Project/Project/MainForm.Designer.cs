@@ -82,7 +82,6 @@
             this.catalog_btn.TabIndex = 4;
             this.catalog_btn.Text = "CATALOG";
             this.catalog_btn.UseVisualStyleBackColor = true;
-            this.catalog_btn.Click += new System.EventHandler(this.catalog_btn_Click);
             // 
             // store_lbl
             // 
