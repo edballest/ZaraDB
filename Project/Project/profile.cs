@@ -41,27 +41,5 @@ namespace Project
             }
             name_lbl.Text = name;
         }
-
-        private void creditCard_btn_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            using (CreditCards cc = new CreditCards())
-            {
-                cc.connectionString = connectionString;
-                cc.customer_id = customer_id;
-                cc.ShowDialog();
-            }
-        }
-
-        private void editProf_btn_Click(object sender, EventArgs e)
-        {
-            using (ModifyProfile modifyProf = new ModifyProfile())
-            {
-                modifyProf.connectionString = connectionString;
-                modifyProf.customer_id = customer_id;
-                modifyProf.ShowDialog();
-            }
-
-        }
     }
 }
