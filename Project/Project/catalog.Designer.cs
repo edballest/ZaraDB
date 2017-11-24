@@ -35,6 +35,7 @@
             this.price_lbl = new System.Windows.Forms.Label();
             this.sizesList = new System.Windows.Forms.ListBox();
             this.colorList = new System.Windows.Forms.ListBox();
+            this.decortative_lbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // departmentList
@@ -100,11 +101,21 @@
             this.colorList.TabIndex = 7;
             this.colorList.SelectedIndexChanged += new System.EventHandler(this.colorList_SelectedIndexChanged);
             // 
+            // decortative_lbl
+            // 
+            this.decortative_lbl.AutoSize = true;
+            this.decortative_lbl.Location = new System.Drawing.Point(536, 293);
+            this.decortative_lbl.Name = "decortative_lbl";
+            this.decortative_lbl.Size = new System.Drawing.Size(13, 13);
+            this.decortative_lbl.TabIndex = 8;
+            this.decortative_lbl.Text = "$";
+            // 
             // catalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 379);
+            this.Controls.Add(this.decortative_lbl);
             this.Controls.Add(this.colorList);
             this.Controls.Add(this.sizesList);
             this.Controls.Add(this.price_lbl);
@@ -129,5 +140,6 @@
         private System.Windows.Forms.Label price_lbl;
         private System.Windows.Forms.ListBox sizesList;
         private System.Windows.Forms.ListBox colorList;
+        private System.Windows.Forms.Label decortative_lbl;
     }
 }

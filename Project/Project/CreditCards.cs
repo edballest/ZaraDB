@@ -17,9 +17,9 @@ namespace Project
     {
         public string connectionString;
         public string customer_id { get; set; }
-        public string number { get; set; }
-        public string numSel { get; set; }
-        public string newCC { get; set; }
+        //public string number { get; set; }
+        //public string numSel { get; set; }
+        //public string newCC { get; set; }
 
         public CreditCards()
         {

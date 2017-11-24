@@ -149,30 +149,24 @@ namespace Project
 
         private void populatePrice()
         {
-            string query = "select isnull((select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where Inventory.store_id=Store.store_id and city=@cityName and street=@streetName and UPC_code=@UPC_code), 0)";
-            //EL QUERY SÍ DEVUELVE LO QUE DEBERÍA
+            string query = "select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where Inventory.store_id=Store.store_id and city=@cityName and street=@streetName and UPC_code=@UPC_code";
+            
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@UPC_code", colorList.SelectedValue);
                 command.Parameters.AddWithValue("@cityName", storeCity);
                 command.Parameters.AddWithValue("@streetName", storeStreet);
-
-                //Comparar Queries ESTO NO VA
-                //if ((int)command.ExecuteScalar()==0)
-                //{
-                //    //ME TENGO QUE ASEGURAR DE QUE CUANDO SE HAGA ESTA SENTENCIA EL QUERY ME VAYA A DAR UN NUMERO SIEMPRE, NO ME PUEDE DAR NULL
-                //    //price = command.ExecuteScalar().ToString();
-                //    connection.Close();
-                //    price_lbl.Text = "price";
-                //}
-                //else
-                //{
-                //    connection.Close();
-                //    price_lbl.Text = "Product not in this Store";
-                //}
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        price_lbl.Text = reader[0].ToString();
+                        //igual hay que cambiar el código si no hubiese producto en tienda
+                    }
+                }
+               
             }
         }
 
