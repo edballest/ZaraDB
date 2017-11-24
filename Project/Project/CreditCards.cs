@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 
-//what is commented is because it doesn't work. Watch video4
 
 namespace Project
 {
@@ -44,9 +43,7 @@ namespace Project
             using (SqlCommand command = new SqlCommand(query, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                connection.Open();
                 command.Parameters.AddWithValue("@customer_id", customer_id);
-                connection.Close();
 
                 DataTable creditCards = new DataTable();
                 adapter.Fill(creditCards);
@@ -58,40 +55,56 @@ namespace Project
 
         private void remove_btn_Click(object sender, EventArgs e)
         {
-            //this.numSel = creditCardList.SelectedValue.ToString();
+            string query = "delete from Credit_Card where number=@CreditCardNumber and customer_id=@customer_id";
 
-            //string query = "delete from Credit_Card where (number=@number and Credit_Card.customer_id=@customer_id)";
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand(query, connection))
-            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            //{
-            //    command.Parameters.AddWithValue("@number", numSel);
-            //    command.Parameters.AddWithValue("@customer_id", customer_id);
-            //    populateCreditCardList();
-            //}
-
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@CreditCardNumber", creditCardList.SelectedValue);
+                command.Parameters.AddWithValue("@customer_id", customer_id);
+                command.ExecuteNonQuery();
+            }
+            populateCreditCardList();
         }
 
         private void add_btn_Click(object sender, EventArgs e)
         {
-            //this.newCC = creditCard_txt.Text.ToString();
-
-            //string query = "insert into Credit_Card (customer_id,number) values (@customer_id,@newCC)";
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand(query, connection))
-            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            //{
-            //    command.Parameters.AddWithValue("@newCC", newCC);
-            //    command.Parameters.AddWithValue("@customer_id", customer_id);
-            //    populateCreditCardList();
-            //}
-
-
+            string query = "insert into Credit_Card values(@customer_id, @NewCreditCardNumber)";
+            
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@NewCreditCardNumber", creditCard_txt.Text);
+                command.Parameters.AddWithValue("@customer_id", customer_id);
+                command.ExecuteNonQuery();
+            }
+            populateCreditCardList();
+            creditCard_txt.Clear();
         }
 
         private void back_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void update_btn_Click(object sender, EventArgs e)
+        {
+            string query = "update Credit_Card set number=@ChangeCC where number=@CreditCardNumber and customer_id=@customer_id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@CreditCardNumber", creditCardList.SelectedValue);
+                command.Parameters.AddWithValue("@ChangeCC", creditCard_txt.Text);
+                command.Parameters.AddWithValue("@customer_id", customer_id);
+
+                command.ExecuteNonQuery(); //En el vídeo usa command.ExecuteScalar() pero esto funciona también
+            }
+            populateCreditCardList();
+            creditCard_txt.Clear();
         }
     }
 }

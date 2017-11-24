@@ -161,18 +161,18 @@ namespace Project
                 command.Parameters.AddWithValue("@streetName", storeStreet);
 
                 //Comparar Queries ESTO NO VA
-                if ((int)command.ExecuteScalar()==0)
-                {
-                    //ME TENGO QUE ASEGURAR DE QUE CUANDO SE HAGA ESTA SENTENCIA EL QUERY ME VAYA A DAR UN NUMERO SIEMPRE, NO ME PUEDE DAR NULL
-                    //price = command.ExecuteScalar().ToString();
-                    connection.Close();
-                    price_lbl.Text = "price";
-                }
-                else
-                {
-                    connection.Close();
-                    price_lbl.Text = "Product not in this Store";
-                }
+                //if ((int)command.ExecuteScalar()==0)
+                //{
+                //    //ME TENGO QUE ASEGURAR DE QUE CUANDO SE HAGA ESTA SENTENCIA EL QUERY ME VAYA A DAR UN NUMERO SIEMPRE, NO ME PUEDE DAR NULL
+                //    //price = command.ExecuteScalar().ToString();
+                //    connection.Close();
+                //    price_lbl.Text = "price";
+                //}
+                //else
+                //{
+                //    connection.Close();
+                //    price_lbl.Text = "Product not in this Store";
+                //}
             }
         }
 
