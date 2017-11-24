@@ -12,28 +12,29 @@ using System.Data.SqlClient;
 
 namespace Project
 {
-    public partial class logIn : Form
+    public partial class CustomerCheckOut : Form
     {
         SqlConnection connection;
 
+        public string connectionString { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public string name { get; set; }
         public static string customer_id { get; set; }
-        public string connectionString { get; set; }
 
-        public logIn()
+        public CustomerCheckOut()
         {
             InitializeComponent();
         }
 
-        private void logIn_Load(object sender, EventArgs e)
+        private void CustomerCheckOut_Load(object sender, EventArgs e)
         {
-            pswd_txt.PasswordChar = '*';
+
         }
 
         private void continue_btn_Click(object sender, EventArgs e)
         {
+            //check if customer is already logged in
+
             if ((email_txt.Text.ToString() != "") && (pswd_txt.Text.ToString() != ""))
             {
                 this.email = email_txt.Text.ToString();
@@ -54,21 +55,26 @@ namespace Project
 
                 this.Hide();
 
-                using (profile profile = new profile())
+                using (CheckOut checkOut = new CheckOut())
                 {
-                    profile.connectionString = connectionString;
-                    profile.customer_id = customer_id;
-                    profile.ShowDialog();
+                    checkOut.connectionString = connectionString;
+                    checkOut.customer_id = customer_id;
+                    checkOut.ShowDialog();
                 }
             }
-
-
-
         }
 
-        private void back_btn_Click(object sender, EventArgs e)
+        private void guest_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
+
+            using (CheckOut checkOut = new CheckOut())
+            {
+                checkOut.connectionString = connectionString;
+                checkOut.customer_id = "1";
+                checkOut.ShowDialog();
+            }
+            
         }
     }
 }

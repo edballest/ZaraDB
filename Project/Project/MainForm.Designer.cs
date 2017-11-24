@@ -64,6 +64,7 @@
             this.register_btn.TabIndex = 2;
             this.register_btn.Text = "REGISTER";
             this.register_btn.UseVisualStyleBackColor = true;
+            this.register_btn.Click += new System.EventHandler(this.register_btn_Click);
             // 
             // checkOut_btn
             // 
@@ -73,6 +74,7 @@
             this.checkOut_btn.TabIndex = 3;
             this.checkOut_btn.Text = "CHECK OUT";
             this.checkOut_btn.UseVisualStyleBackColor = true;
+            this.checkOut_btn.Click += new System.EventHandler(this.checkOut_btn_Click);
             // 
             // catalog_btn
             // 
