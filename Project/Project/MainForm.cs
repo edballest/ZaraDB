@@ -57,5 +57,15 @@ namespace Project
             }
 
         }
+
+        private void catalog_btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using (catalog c1 = new catalog())
+            {
+                c1.connectionString = connectionString;
+                var result = c1.ShowDialog();
+            }
+        }
     }
 }
