@@ -1,9 +1,0 @@
-diff a/Project/SQLQueries/DBcreation.sql b/Project/SQLQueries/DBcreation.sql	(rejected hunks)
-@@ -28,6 +28,7 @@
- first_name		NVARCHAR(20),
- middle_name		NVARCHAR(20),
- last_name		NVARCHAR(20),				
-+FOREIGN KEY (address_id) REFERENCES Adresses)
- 
- CREATE TABLE Product(
- UPC_code		NVARCHAR(14) PRIMARY KEY,
