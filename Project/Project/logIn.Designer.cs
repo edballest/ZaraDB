@@ -33,12 +33,13 @@
             this.email_txt = new System.Windows.Forms.TextBox();
             this.pswd_txt = new System.Windows.Forms.TextBox();
             this.continue_btn = new System.Windows.Forms.Button();
+            this.back_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // email_lbl
             // 
             this.email_lbl.AutoSize = true;
-            this.email_lbl.Location = new System.Drawing.Point(11, 45);
+            this.email_lbl.Location = new System.Drawing.Point(98, 90);
             this.email_lbl.Name = "email_lbl";
             this.email_lbl.Size = new System.Drawing.Size(31, 13);
             this.email_lbl.TabIndex = 0;
@@ -47,7 +48,7 @@
             // pswd_lbl
             // 
             this.pswd_lbl.AutoSize = true;
-            this.pswd_lbl.Location = new System.Drawing.Point(12, 113);
+            this.pswd_lbl.Location = new System.Drawing.Point(78, 151);
             this.pswd_lbl.Name = "pswd_lbl";
             this.pswd_lbl.Size = new System.Drawing.Size(52, 13);
             this.pswd_lbl.TabIndex = 1;
@@ -55,33 +56,44 @@
             // 
             // email_txt
             // 
-            this.email_txt.Location = new System.Drawing.Point(134, 45);
+            this.email_txt.Location = new System.Drawing.Point(134, 87);
             this.email_txt.Name = "email_txt";
             this.email_txt.Size = new System.Drawing.Size(100, 20);
             this.email_txt.TabIndex = 2;
             // 
             // pswd_txt
             // 
-            this.pswd_txt.Location = new System.Drawing.Point(134, 106);
+            this.pswd_txt.Location = new System.Drawing.Point(134, 148);
             this.pswd_txt.Name = "pswd_txt";
             this.pswd_txt.Size = new System.Drawing.Size(100, 20);
             this.pswd_txt.TabIndex = 3;
             // 
             // continue_btn
             // 
-            this.continue_btn.Location = new System.Drawing.Point(146, 181);
+            this.continue_btn.Location = new System.Drawing.Point(134, 199);
             this.continue_btn.Name = "continue_btn";
             this.continue_btn.Size = new System.Drawing.Size(75, 23);
             this.continue_btn.TabIndex = 4;
-            this.continue_btn.Text = "Continue";
+            this.continue_btn.Text = "CONTINUE";
             this.continue_btn.UseVisualStyleBackColor = true;
             this.continue_btn.Click += new System.EventHandler(this.continue_btn_Click);
+            // 
+            // back_btn
+            // 
+            this.back_btn.Location = new System.Drawing.Point(12, 12);
+            this.back_btn.Name = "back_btn";
+            this.back_btn.Size = new System.Drawing.Size(75, 23);
+            this.back_btn.TabIndex = 5;
+            this.back_btn.Text = "BACK";
+            this.back_btn.UseVisualStyleBackColor = true;
+            this.back_btn.Click += new System.EventHandler(this.back_btn_Click);
             // 
             // logIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.back_btn);
             this.Controls.Add(this.continue_btn);
             this.Controls.Add(this.pswd_txt);
             this.Controls.Add(this.email_txt);
@@ -102,5 +114,6 @@
         private System.Windows.Forms.TextBox email_txt;
         private System.Windows.Forms.TextBox pswd_txt;
         private System.Windows.Forms.Button continue_btn;
+        private System.Windows.Forms.Button back_btn;
     }
 }

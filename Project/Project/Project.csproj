@@ -52,11 +52,29 @@
     <Compile Include="catalog.Designer.cs">
       <DependentUpon>catalog.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckOut.Designer.cs">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseCreditCard.Designer.cs">
+      <DependentUpon>ChooseCreditCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreditCards.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreditCards.Designer.cs">
       <DependentUpon>CreditCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerCheckOut.Designer.cs">
+      <DependentUpon>CustomerCheckOut.cs</DependentUpon>
     </Compile>
     <Compile Include="logIn.cs">
       <SubType>Form</SubType>
@@ -84,6 +102,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="selectStore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,8 +122,17 @@
     <EmbeddedResource Include="catalog.resx">
       <DependentUpon>catalog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CheckOut.resx">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseCreditCard.resx">
+      <DependentUpon>ChooseCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreditCards.resx">
       <DependentUpon>CreditCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerCheckOut.resx">
+      <DependentUpon>CustomerCheckOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>
@@ -122,6 +155,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="selectStore.resx">
       <DependentUpon>selectStore.cs</DependentUpon>
     </EmbeddedResource>

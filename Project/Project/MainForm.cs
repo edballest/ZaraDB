@@ -48,7 +48,7 @@ namespace Project
 
         private void logIn_btn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             using(logIn login = new logIn())
             {
                 login.connectionString = connectionString;
@@ -60,11 +60,36 @@ namespace Project
 
         private void catalog_btn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             using (catalog c1 = new catalog())
             {
                 c1.connectionString = connectionString;
                 var result = c1.ShowDialog();
+            }
+        }
+
+        private void register_btn_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            using (Register register = new Register())
+            {
+                register.connectionString = connectionString;
+                register.ShowDialog();
+
+            }
+
+        }
+
+        private void checkOut_btn_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            using (CustomerCheckOut customer = new CustomerCheckOut())
+            {
+                customer.connectionString = connectionString;
+                customer.ShowDialog();
+                //need to get store_id
+                //customer.store_id=
+
             }
         }
     }
