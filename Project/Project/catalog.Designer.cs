@@ -33,7 +33,8 @@
             this.typeList = new System.Windows.Forms.ListBox();
             this.descriptionList = new System.Windows.Forms.ListBox();
             this.price_lbl = new System.Windows.Forms.Label();
-            this.decorativo_lbl = new System.Windows.Forms.Label();
+            this.sizesList = new System.Windows.Forms.ListBox();
+            this.colorList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // departmentList
@@ -75,27 +76,37 @@
             // price_lbl
             // 
             this.price_lbl.AutoSize = true;
-            this.price_lbl.Location = new System.Drawing.Point(476, 57);
+            this.price_lbl.Location = new System.Drawing.Point(485, 293);
             this.price_lbl.Name = "price_lbl";
             this.price_lbl.Size = new System.Drawing.Size(31, 13);
             this.price_lbl.TabIndex = 4;
             this.price_lbl.Text = "Price";
             // 
-            // decorativo_lbl
+            // sizesList
             // 
-            this.decorativo_lbl.AutoSize = true;
-            this.decorativo_lbl.Location = new System.Drawing.Point(514, 57);
-            this.decorativo_lbl.Name = "decorativo_lbl";
-            this.decorativo_lbl.Size = new System.Drawing.Size(13, 13);
-            this.decorativo_lbl.TabIndex = 5;
-            this.decorativo_lbl.Text = "$";
+            this.sizesList.FormattingEnabled = true;
+            this.sizesList.Location = new System.Drawing.Point(488, 57);
+            this.sizesList.Name = "sizesList";
+            this.sizesList.Size = new System.Drawing.Size(120, 82);
+            this.sizesList.TabIndex = 6;
+            this.sizesList.SelectedIndexChanged += new System.EventHandler(this.sizesList_SelectedIndexChanged);
+            // 
+            // colorList
+            // 
+            this.colorList.FormattingEnabled = true;
+            this.colorList.Location = new System.Drawing.Point(488, 161);
+            this.colorList.Name = "colorList";
+            this.colorList.Size = new System.Drawing.Size(120, 82);
+            this.colorList.TabIndex = 7;
+            this.colorList.SelectedIndexChanged += new System.EventHandler(this.colorList_SelectedIndexChanged);
             // 
             // catalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 379);
-            this.Controls.Add(this.decorativo_lbl);
+            this.ClientSize = new System.Drawing.Size(657, 379);
+            this.Controls.Add(this.colorList);
+            this.Controls.Add(this.sizesList);
             this.Controls.Add(this.price_lbl);
             this.Controls.Add(this.descriptionList);
             this.Controls.Add(this.typeList);
@@ -116,6 +127,7 @@
         private System.Windows.Forms.ListBox typeList;
         private System.Windows.Forms.ListBox descriptionList;
         private System.Windows.Forms.Label price_lbl;
-        private System.Windows.Forms.Label decorativo_lbl;
+        private System.Windows.Forms.ListBox sizesList;
+        private System.Windows.Forms.ListBox colorList;
     }
 }

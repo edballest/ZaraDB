@@ -18,7 +18,7 @@ namespace Project
         public string connectionString { get; set; }
         public string storeCity { get; set; }
         public string storeStreet { get; set; }
-        public string price { get; set; }
+        public static string price { get; set; }
 
         public catalog()
         {
@@ -89,7 +89,7 @@ namespace Project
 
         private void populateDescriptionList()
         {
-            string query = "select distinct description from Category inner join Product on Product.type=Category.type where category=@categoryName and department=@departmentName and Product.type=@typeName";
+            string query = "select distinct description, item from Category inner join Product on Product.type=Category.type where category=@categoryName and department=@departmentName and Product.type=@typeName";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -103,8 +103,76 @@ namespace Project
                 adapter.Fill(description);
 
                 descriptionList.DisplayMember = "description";
-                descriptionList.ValueMember = "UPC_code";
+                descriptionList.ValueMember = "item";
                 descriptionList.DataSource = description;
+            }
+        }
+
+        private void populateSizeList()
+        {
+            string query = "select distinct size from Product where item=@itemName";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@itemName", descriptionList.SelectedValue);
+              
+                DataTable items = new DataTable();
+                adapter.Fill(items);
+
+                sizesList.DisplayMember = "size";
+                sizesList.ValueMember = "size";
+                sizesList.DataSource = items;
+            }
+        }
+
+        private void populateColorList()
+        {
+            string query = "select distinct color, UPC_code from Product where item=@itemName and size=@sizeName";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@itemName", descriptionList.SelectedValue);
+                command.Parameters.AddWithValue("@sizeName", sizesList.SelectedValue);
+
+                DataTable colors = new DataTable();
+                adapter.Fill(colors);
+
+                colorList.DisplayMember = "color";
+                colorList.ValueMember = "UPC_code"; 
+                colorList.DataSource = colors;
+            }
+        }
+
+        private void populatePrice()
+        {
+            string query = "select isnull((select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where Inventory.store_id=Store.store_id and city=@cityName and street=@streetName and UPC_code=@UPC_code), 0)";
+            //EL QUERY SÍ DEVUELVE LO QUE DEBERÍA
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@UPC_code", colorList.SelectedValue);
+                command.Parameters.AddWithValue("@cityName", storeCity);
+                command.Parameters.AddWithValue("@streetName", storeStreet);
+
+                //Comparar Queries ESTO NO VA
+                if ((int)command.ExecuteScalar()==0)
+                {
+                    //ME TENGO QUE ASEGURAR DE QUE CUANDO SE HAGA ESTA SENTENCIA EL QUERY ME VAYA A DAR UN NUMERO SIEMPRE, NO ME PUEDE DAR NULL
+                    //price = command.ExecuteScalar().ToString();
+                    connection.Close();
+                    price_lbl.Text = "price";
+                }
+                else
+                {
+                    connection.Close();
+                    price_lbl.Text = "Product not in this Store";
+                }
             }
         }
 
@@ -120,23 +188,17 @@ namespace Project
 
         private void descriptionList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = "select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where Inventory.store_id=Store.store_id and city=storeCity and street=@streetName and UPC_code=@UPC_code";
+            populateSizeList();
+        }
 
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@UPC_code", descriptionList.SelectedValue);
-                command.Parameters.AddWithValue("@cityName", storeCity);
-                command.Parameters.AddWithValue("@streetName", storeStreet);
-                
-                //ESTO NO FUNCIONA
-                price = command.ExecuteScalar().ToString();
-                connection.Close();
-                price_lbl.Text = price;
-            }
+        private void sizesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            populateColorList();
+        }
 
+        private void colorList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            populatePrice();
         }
     }
 }
