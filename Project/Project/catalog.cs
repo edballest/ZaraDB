@@ -165,6 +165,11 @@ namespace Project
                         price_lbl.Text = reader[0].ToString();
                         //igual hay que cambiar el código si no hubiese producto en tienda
                     }
+                    else
+                    {
+                        //Try this
+                        MessageBox.Show("Item not available in this store");
+                    }
                 }
                
             }
