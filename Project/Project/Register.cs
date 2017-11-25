@@ -30,6 +30,7 @@ namespace Project
 
         private void register_btn_Click(object sender, EventArgs e)
         {
+            IntroduceMember();
             this.Hide();
             //Code to add customer tu Database. Just like ModifyProfile
 
@@ -42,7 +43,8 @@ namespace Project
                 string query = "insert into Customer(email, password, address_id, first_name, last_name) values(@Email, @Password,@Address_id, @FirstName, @LastName)";
 
                 //Si no meto address_id, me lo genera solo?
-                //meter código de verificación de que todos los campos de arriba tienen valor, sino asignar NULL
+                //PROBAR ESTE CÓDIGO
+
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -50,12 +52,29 @@ namespace Project
                     command.Parameters.AddWithValue("@Email", email_txt.Text);
                     command.Parameters.AddWithValue("@Password", pswd_txt.Text);
                     //command.Parameters.AddWithValue("@Address_id", pswd_txt.Text);
-                    command.Parameters.AddWithValue("@FirstName", firstName_txt.Text);
-                    command.Parameters.AddWithValue("@LastName", lastName_txt.Text);
+                    if (firstName_lbl.Text != "")
+                    {
+                        command.Parameters.AddWithValue("@FirstName", firstName_txt.Text);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@FirstName", null);
+                    }
+                    if (lastName_lbl.Text != "")
+                    {
+                        command.Parameters.AddWithValue("@LastName", lastName_txt.Text);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@LastName", null);
+                    }
                     command.ExecuteNonQuery();
                 }
 
+                //email_txt.Clear();
                 //pswd_txt.Clear();
+                //firstName_txt.Clear();
+                //lastName_txt.Clear();
             }
             else
             {
