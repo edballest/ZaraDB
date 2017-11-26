@@ -70,18 +70,36 @@ namespace Project
 
         private void add_btn_Click(object sender, EventArgs e)
         {
-            string query = "insert into Credit_Card values(@customer_id, @NewCreditCardNumber)";
-            
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
+            if (creditCard_txt.Text!="")
             {
-                connection.Open();
-                command.Parameters.AddWithValue("@NewCreditCardNumber", creditCard_txt.Text);
-                command.Parameters.AddWithValue("@customer_id", customer_id);
-                command.ExecuteNonQuery();
+                bool a = true;
+                foreach (char c in creditCard_txt.Text)
+                {
+                    if ((c < '0') || (c > '9'))
+                    {
+                        a = false;
+                    }
+                }
+                if (a)
+                {
+                    string query = "insert into Credit_Card values(@customer_id, @NewCreditCardNumber)";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@NewCreditCardNumber", creditCard_txt.Text);
+                        command.Parameters.AddWithValue("@customer_id", customer_id);
+                        command.ExecuteNonQuery();
+                    }
+                    populateCreditCardList();
+                    creditCard_txt.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Please introduce only numbers");
+                }
             }
-            populateCreditCardList();
-            creditCard_txt.Clear();
         }
 
         private void back_btn_Click(object sender, EventArgs e)
