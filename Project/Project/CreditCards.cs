@@ -109,20 +109,33 @@ namespace Project
 
         private void update_btn_Click(object sender, EventArgs e)
         {
-            string query = "update Credit_Card set number=@ChangeCC where number=@CreditCardNumber and customer_id=@customer_id";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
+            if (creditCard_txt.Text != "")
             {
-                connection.Open();
-                command.Parameters.AddWithValue("@CreditCardNumber", creditCardList.SelectedValue);
-                command.Parameters.AddWithValue("@ChangeCC", creditCard_txt.Text);
-                command.Parameters.AddWithValue("@customer_id", customer_id);
+                bool a = true;
+                foreach (char c in creditCard_txt.Text)
+                {
+                    if ((c < '0') || (c > '9'))
+                    {
+                        a = false;
+                    }
+                }
+                if (a) { 
+                    string query = "update Credit_Card set number=@ChangeCC where number=@CreditCardNumber and customer_id=@customer_id";
 
-                command.ExecuteNonQuery(); //En el vídeo usa command.ExecuteScalar() pero esto funciona también
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@CreditCardNumber", creditCardList.SelectedValue);
+                        command.Parameters.AddWithValue("@ChangeCC", creditCard_txt.Text);
+                        command.Parameters.AddWithValue("@customer_id", customer_id);
+
+                        command.ExecuteNonQuery();
+                    }
+                    populateCreditCardList();
+                    creditCard_txt.Clear();
+                }
             }
-            populateCreditCardList();
-            creditCard_txt.Clear();
         }
     }
 }
