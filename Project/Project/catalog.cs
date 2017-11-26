@@ -18,7 +18,7 @@ namespace Project
         public string connectionString { get; set; }
         public string storeCity { get; set; }
         public string storeStreet { get; set; }
-        public static string price { get; set; }
+        string check = "OK";
 
         public catalog()
         {
@@ -149,30 +149,98 @@ namespace Project
 
         private void populatePrice()
         {
-            string query = "select isnull((select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where Inventory.store_id=Store.store_id and city=@cityName and street=@streetName and UPC_code=@UPC_code), 0)";
-            //EL QUERY SÍ DEVUELVE LO QUE DEBERÍA
+            string query = "select price from Store inner join Address on Store.address_id=Address.address_id, Inventory where Inventory.store_id=Store.store_id and city=@cityName and street=@streetName and UPC_code=@UPC_code";
+
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@UPC_code", colorList.SelectedValue);
                 command.Parameters.AddWithValue("@cityName", storeCity);
                 command.Parameters.AddWithValue("@streetName", storeStreet);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        price_lbl.Text = reader[0].ToString();
+                        decorative_lbl.Text = "$";
+                        check = "OK";
 
-                //Comparar Queries ESTO NO VA
-                if ((int)command.ExecuteScalar()==0)
-                {
-                    //ME TENGO QUE ASEGURAR DE QUE CUANDO SE HAGA ESTA SENTENCIA EL QUERY ME VAYA A DAR UN NUMERO SIEMPRE, NO ME PUEDE DAR NULL
-                    //price = command.ExecuteScalar().ToString();
-                    connection.Close();
-                    price_lbl.Text = "price";
+                        string query2 = "select city, street from Address inner join Store on Store.address_id=Address.address_id, Inventory " +
+                   "where Inventory.store_id=Store.store_id and UPC_code=@UPC_code";
+
+                        using (connection = new SqlConnection(connectionString))
+                        using (SqlCommand command2 = new SqlCommand(query2, connection))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command2))
+                        {
+                            command2.Parameters.AddWithValue("@UPC_code", colorList.SelectedValue);
+
+                            DataTable cities = new DataTable();
+                            adapter.Fill(cities);
+
+                            otherStoresList.DisplayMember = "city";
+                            otherStoresList.ValueMember = "city";
+                            otherStoresList.DataSource = cities;
+                            cities.Clear();
+
+                            DataTable streets = new DataTable();
+                            adapter.Fill(streets);
+
+                            oSStreetsList.DisplayMember = "street";
+                            oSStreetsList.ValueMember = "street";
+                            oSStreetsList.DataSource = streets;
+                            streets.Clear();
+                        }
+                    }
+                    else
+                    {
+                        price_lbl.Text = "Item not available in this store try: ";
+                        decorative_lbl.Text = "";
+                        check = "NO";
+                    }
                 }
-                else
-                {
-                    connection.Close();
-                    price_lbl.Text = "Product not in this Store";
-                }
+               
+            }
+            if ( check=="NO")
+            {
+                populateotherStoresList();
+            }
+        }
+
+        private void populateotherStoresList()
+        {
+            string query2 = "select city, street from Address inner join Store on Store.address_id=Address.address_id, Inventory " +
+                    "where Inventory.store_id=Store.store_id and UPC_code=@UPC_code";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command2 = new SqlCommand(query2, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command2))
+            {
+                command2.Parameters.AddWithValue("@UPC_code", colorList.SelectedValue);
+                DataTable cities = new DataTable();
+                adapter.Fill(cities);
+
+                otherStoresList.DisplayMember = "city";
+                otherStoresList.ValueMember = "city";
+                otherStoresList.DataSource = cities;
+            }
+        }
+
+        private void populateStreetList()
+        {
+            string query = "select street from Address inner join Store on Store.address_id = Address.address_id where city=@cityName";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@cityName", otherStoresList.SelectedValue);
+                DataTable streets = new DataTable();
+                adapter.Fill(streets);
+
+                oSStreetsList.DisplayMember = "street";
+                oSStreetsList.ValueMember = "street";
+                oSStreetsList.DataSource = streets;
             }
         }
 
@@ -199,6 +267,14 @@ namespace Project
         private void colorList_SelectedIndexChanged(object sender, EventArgs e)
         {
             populatePrice();
+        }
+
+        private void otherStoresList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (check == "NO")
+            {
+                populateStreetList();
+            }
         }
     }
 }

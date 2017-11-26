@@ -17,6 +17,8 @@ namespace Project
         string connectionString;
         //string storeID;
         string storeLocation;
+        string storeCity;
+        string storeStreet;
 
         public FormMain()
         {
@@ -34,7 +36,8 @@ namespace Project
                 if (result == DialogResult.OK)
                 {
                     storeLocation = ss1.storeLocation;
-                    
+                    storeCity = ss1.storeCity;
+                    storeStreet = ss1.storeStreet;
                 }
             }
             store_lbl.Text = storeLocation;
@@ -64,6 +67,8 @@ namespace Project
             using (catalog c1 = new catalog())
             {
                 c1.connectionString = connectionString;
+                c1.storeCity = storeCity;
+                c1.storeStreet = storeStreet;
                 var result = c1.ShowDialog();
             }
         }

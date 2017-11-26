@@ -62,7 +62,7 @@
             // 
             // firstName_txt
             // 
-            this.firstName_txt.Location = new System.Drawing.Point(88, 4);
+            this.firstName_txt.Location = new System.Drawing.Point(135, 4);
             this.firstName_txt.Name = "firstName_txt";
             this.firstName_txt.Size = new System.Drawing.Size(100, 20);
             this.firstName_txt.TabIndex = 1;
@@ -133,7 +133,7 @@
             // apt_lbl
             // 
             this.apt_lbl.AutoSize = true;
-            this.apt_lbl.Location = new System.Drawing.Point(119, 193);
+            this.apt_lbl.Location = new System.Drawing.Point(166, 193);
             this.apt_lbl.Name = "apt_lbl";
             this.apt_lbl.Size = new System.Drawing.Size(23, 13);
             this.apt_lbl.TabIndex = 10;
@@ -150,70 +150,70 @@
             // 
             // lastName_txt
             // 
-            this.lastName_txt.Location = new System.Drawing.Point(88, 28);
+            this.lastName_txt.Location = new System.Drawing.Point(135, 28);
             this.lastName_txt.Name = "lastName_txt";
             this.lastName_txt.Size = new System.Drawing.Size(100, 20);
             this.lastName_txt.TabIndex = 12;
             // 
             // email_txt
             // 
-            this.email_txt.Location = new System.Drawing.Point(88, 52);
+            this.email_txt.Location = new System.Drawing.Point(135, 52);
             this.email_txt.Name = "email_txt";
             this.email_txt.Size = new System.Drawing.Size(100, 20);
             this.email_txt.TabIndex = 13;
             // 
             // pswd_txt
             // 
-            this.pswd_txt.Location = new System.Drawing.Point(88, 75);
+            this.pswd_txt.Location = new System.Drawing.Point(135, 75);
             this.pswd_txt.Name = "pswd_txt";
             this.pswd_txt.Size = new System.Drawing.Size(100, 20);
             this.pswd_txt.TabIndex = 14;
             // 
             // country_txt
             // 
-            this.country_txt.Location = new System.Drawing.Point(88, 103);
+            this.country_txt.Location = new System.Drawing.Point(135, 103);
             this.country_txt.Name = "country_txt";
             this.country_txt.Size = new System.Drawing.Size(100, 20);
             this.country_txt.TabIndex = 15;
             // 
             // city_txt
             // 
-            this.city_txt.Location = new System.Drawing.Point(88, 134);
+            this.city_txt.Location = new System.Drawing.Point(135, 134);
             this.city_txt.Name = "city_txt";
             this.city_txt.Size = new System.Drawing.Size(100, 20);
             this.city_txt.TabIndex = 16;
             // 
             // street_txt
             // 
-            this.street_txt.Location = new System.Drawing.Point(88, 160);
+            this.street_txt.Location = new System.Drawing.Point(135, 160);
             this.street_txt.Name = "street_txt";
             this.street_txt.Size = new System.Drawing.Size(100, 20);
             this.street_txt.TabIndex = 17;
             // 
             // number_txt
             // 
-            this.number_txt.Location = new System.Drawing.Point(63, 190);
+            this.number_txt.Location = new System.Drawing.Point(110, 190);
             this.number_txt.Name = "number_txt";
             this.number_txt.Size = new System.Drawing.Size(30, 20);
             this.number_txt.TabIndex = 18;
             // 
             // apt_txt
             // 
-            this.apt_txt.Location = new System.Drawing.Point(158, 193);
+            this.apt_txt.Location = new System.Drawing.Point(205, 193);
             this.apt_txt.Name = "apt_txt";
             this.apt_txt.Size = new System.Drawing.Size(30, 20);
             this.apt_txt.TabIndex = 19;
             // 
             // zipCode_txt
             // 
-            this.zipCode_txt.Location = new System.Drawing.Point(88, 224);
+            this.zipCode_txt.Location = new System.Drawing.Point(135, 224);
             this.zipCode_txt.Name = "zipCode_txt";
             this.zipCode_txt.Size = new System.Drawing.Size(100, 20);
             this.zipCode_txt.TabIndex = 20;
             // 
             // modify_btn
             // 
-            this.modify_btn.Location = new System.Drawing.Point(197, 221);
+            this.modify_btn.Location = new System.Drawing.Point(160, 261);
             this.modify_btn.Name = "modify_btn";
             this.modify_btn.Size = new System.Drawing.Size(75, 23);
             this.modify_btn.TabIndex = 21;
@@ -225,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(309, 308);
             this.Controls.Add(this.modify_btn);
             this.Controls.Add(this.zipCode_txt);
             this.Controls.Add(this.apt_txt);

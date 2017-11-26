@@ -33,6 +33,7 @@
             this.remove_btn = new System.Windows.Forms.Button();
             this.creditCard_txt = new System.Windows.Forms.TextBox();
             this.back_btn = new System.Windows.Forms.Button();
+            this.update_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // creditCardList
@@ -46,7 +47,7 @@
             // 
             // add_btn
             // 
-            this.add_btn.Location = new System.Drawing.Point(187, 142);
+            this.add_btn.Location = new System.Drawing.Point(153, 141);
             this.add_btn.Name = "add_btn";
             this.add_btn.Size = new System.Drawing.Size(75, 23);
             this.add_btn.TabIndex = 1;
@@ -66,9 +67,9 @@
             // 
             // creditCard_txt
             // 
-            this.creditCard_txt.Location = new System.Drawing.Point(24, 144);
+            this.creditCard_txt.Location = new System.Drawing.Point(13, 144);
             this.creditCard_txt.Name = "creditCard_txt";
-            this.creditCard_txt.Size = new System.Drawing.Size(100, 20);
+            this.creditCard_txt.Size = new System.Drawing.Size(120, 20);
             this.creditCard_txt.TabIndex = 3;
             // 
             // back_btn
@@ -81,11 +82,22 @@
             this.back_btn.UseVisualStyleBackColor = true;
             this.back_btn.Click += new System.EventHandler(this.back_btn_Click);
             // 
+            // update_btn
+            // 
+            this.update_btn.Location = new System.Drawing.Point(153, 63);
+            this.update_btn.Name = "update_btn";
+            this.update_btn.Size = new System.Drawing.Size(75, 23);
+            this.update_btn.TabIndex = 5;
+            this.update_btn.Text = "Update";
+            this.update_btn.UseVisualStyleBackColor = true;
+            this.update_btn.Click += new System.EventHandler(this.update_btn_Click);
+            // 
             // CreditCards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.update_btn);
             this.Controls.Add(this.back_btn);
             this.Controls.Add(this.creditCard_txt);
             this.Controls.Add(this.remove_btn);
@@ -106,5 +118,6 @@
         private System.Windows.Forms.Button remove_btn;
         private System.Windows.Forms.TextBox creditCard_txt;
         private System.Windows.Forms.Button back_btn;
+        private System.Windows.Forms.Button update_btn;
     }
 }

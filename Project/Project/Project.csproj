@@ -118,6 +118,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ZaraDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <EmbeddedResource Include="catalog.resx">
       <DependentUpon>catalog.cs</DependentUpon>
@@ -172,14 +173,17 @@
     </Compile>
     <None Include="ZaraDBDataSet.xsc">
       <DependentUpon>ZaraDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ZaraDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ZaraDBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ZaraDBDataSet.xss">
       <DependentUpon>ZaraDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
