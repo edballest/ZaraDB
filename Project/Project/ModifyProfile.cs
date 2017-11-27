@@ -49,7 +49,7 @@ namespace Project
 
         private void populateProfile()
         {
-            string query = "select first_name, last_name, email, password, country, city, street, number, apartment, zip_code, address_id from Customer inner join Address on Address.address_id=Customer.address_id where customer_id=@customer_id";
+            string query = "select first_name, last_name, email, password, country, city, street, number, apartment, zip_code, Address.address_id from Customer inner join Address on Address.address_id=Customer.address_id where customer_id=@customer_id";
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
