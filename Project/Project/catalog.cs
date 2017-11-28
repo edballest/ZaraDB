@@ -166,31 +166,9 @@ namespace Project
                         decorative_lbl.Text = "$";
                         check = "OK";
 
-                        string query2 = "select city, street from Address inner join Store on Store.address_id=Address.address_id, Inventory " +
-                   "where Inventory.store_id=Store.store_id and UPC_code=@UPC_code";
+                        otherStoresList.Hide();
+                        oSStreetsList.Hide();
 
-                        using (connection = new SqlConnection(connectionString))
-                        using (SqlCommand command2 = new SqlCommand(query2, connection))
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command2))
-                        {
-                            command2.Parameters.AddWithValue("@UPC_code", colorList.SelectedValue);
-
-                            DataTable cities = new DataTable();
-                            adapter.Fill(cities);
-
-                            otherStoresList.DisplayMember = "city";
-                            otherStoresList.ValueMember = "city";
-                            otherStoresList.DataSource = cities;
-                            cities.Clear();
-
-                            DataTable streets = new DataTable();
-                            adapter.Fill(streets);
-
-                            oSStreetsList.DisplayMember = "street";
-                            oSStreetsList.ValueMember = "street";
-                            oSStreetsList.DataSource = streets;
-                            streets.Clear();
-                        }
                     }
                     else
                     {
@@ -220,6 +198,7 @@ namespace Project
                 DataTable cities = new DataTable();
                 adapter.Fill(cities);
 
+                otherStoresList.Show();
                 otherStoresList.DisplayMember = "city";
                 otherStoresList.ValueMember = "city";
                 otherStoresList.DataSource = cities;
@@ -238,6 +217,7 @@ namespace Project
                 DataTable streets = new DataTable();
                 adapter.Fill(streets);
 
+                oSStreetsList.Show();
                 oSStreetsList.DisplayMember = "street";
                 oSStreetsList.ValueMember = "street";
                 oSStreetsList.DataSource = streets;
