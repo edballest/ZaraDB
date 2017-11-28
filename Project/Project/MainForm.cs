@@ -46,7 +46,13 @@ namespace Project
 
         private void employee_btn_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            using(employeeForm eF1 = new employeeForm())
+            {
+                eF1.connectionString = connectionString;
+                eF1.ShowDialog();
+            }
+            this.Show();
         }
 
         private void logIn_btn_Click(object sender, EventArgs e)
