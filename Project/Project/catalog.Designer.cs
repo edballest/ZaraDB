@@ -38,6 +38,14 @@
             this.decorative_lbl = new System.Windows.Forms.Label();
             this.otherStoresList = new System.Windows.Forms.ListBox();
             this.oSStreetsList = new System.Windows.Forms.ListBox();
+            this.d_lbl = new System.Windows.Forms.Label();
+            this.c_lbl = new System.Windows.Forms.Label();
+            this.t_lbl = new System.Windows.Forms.Label();
+            this.pd_lbl = new System.Windows.Forms.Label();
+            this.s_lbl = new System.Windows.Forms.Label();
+            this.co_lbl = new System.Windows.Forms.Label();
+            this.ci_lbl = new System.Windows.Forms.Label();
+            this.st_lbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // departmentList
@@ -90,16 +98,16 @@
             this.sizesList.FormattingEnabled = true;
             this.sizesList.Location = new System.Drawing.Point(488, 57);
             this.sizesList.Name = "sizesList";
-            this.sizesList.Size = new System.Drawing.Size(120, 82);
+            this.sizesList.Size = new System.Drawing.Size(120, 69);
             this.sizesList.TabIndex = 6;
             this.sizesList.SelectedIndexChanged += new System.EventHandler(this.sizesList_SelectedIndexChanged);
             // 
             // colorList
             // 
             this.colorList.FormattingEnabled = true;
-            this.colorList.Location = new System.Drawing.Point(488, 161);
+            this.colorList.Location = new System.Drawing.Point(488, 148);
             this.colorList.Name = "colorList";
-            this.colorList.Size = new System.Drawing.Size(120, 82);
+            this.colorList.Size = new System.Drawing.Size(120, 95);
             this.colorList.TabIndex = 7;
             this.colorList.SelectedIndexChanged += new System.EventHandler(this.colorList_SelectedIndexChanged);
             // 
@@ -128,11 +136,91 @@
             this.oSStreetsList.Size = new System.Drawing.Size(120, 95);
             this.oSStreetsList.TabIndex = 10;
             // 
+            // d_lbl
+            // 
+            this.d_lbl.AutoSize = true;
+            this.d_lbl.Location = new System.Drawing.Point(31, 38);
+            this.d_lbl.Name = "d_lbl";
+            this.d_lbl.Size = new System.Drawing.Size(70, 13);
+            this.d_lbl.TabIndex = 11;
+            this.d_lbl.Text = "Departments:";
+            // 
+            // c_lbl
+            // 
+            this.c_lbl.AutoSize = true;
+            this.c_lbl.Location = new System.Drawing.Point(31, 132);
+            this.c_lbl.Name = "c_lbl";
+            this.c_lbl.Size = new System.Drawing.Size(60, 13);
+            this.c_lbl.TabIndex = 12;
+            this.c_lbl.Text = "Categories:";
+            // 
+            // t_lbl
+            // 
+            this.t_lbl.AutoSize = true;
+            this.t_lbl.Location = new System.Drawing.Point(178, 38);
+            this.t_lbl.Name = "t_lbl";
+            this.t_lbl.Size = new System.Drawing.Size(34, 13);
+            this.t_lbl.TabIndex = 13;
+            this.t_lbl.Text = "Type:";
+            // 
+            // pd_lbl
+            // 
+            this.pd_lbl.AutoSize = true;
+            this.pd_lbl.Location = new System.Drawing.Point(336, 38);
+            this.pd_lbl.Name = "pd_lbl";
+            this.pd_lbl.Size = new System.Drawing.Size(103, 13);
+            this.pd_lbl.TabIndex = 14;
+            this.pd_lbl.Text = "Product Description:";
+            // 
+            // s_lbl
+            // 
+            this.s_lbl.AutoSize = true;
+            this.s_lbl.Location = new System.Drawing.Point(485, 38);
+            this.s_lbl.Name = "s_lbl";
+            this.s_lbl.Size = new System.Drawing.Size(30, 13);
+            this.s_lbl.TabIndex = 15;
+            this.s_lbl.Text = "Size:";
+            // 
+            // co_lbl
+            // 
+            this.co_lbl.AutoSize = true;
+            this.co_lbl.Location = new System.Drawing.Point(485, 132);
+            this.co_lbl.Name = "co_lbl";
+            this.co_lbl.Size = new System.Drawing.Size(34, 13);
+            this.co_lbl.TabIndex = 16;
+            this.co_lbl.Text = "Color:";
+            // 
+            // ci_lbl
+            // 
+            this.ci_lbl.AutoSize = true;
+            this.ci_lbl.Location = new System.Drawing.Point(336, 255);
+            this.ci_lbl.Name = "ci_lbl";
+            this.ci_lbl.Size = new System.Drawing.Size(35, 13);
+            this.ci_lbl.TabIndex = 17;
+            this.ci_lbl.Text = "Cities:";
+            // 
+            // st_lbl
+            // 
+            this.st_lbl.AutoSize = true;
+            this.st_lbl.Location = new System.Drawing.Point(476, 255);
+            this.st_lbl.Name = "st_lbl";
+            this.st_lbl.Size = new System.Drawing.Size(43, 13);
+            this.st_lbl.TabIndex = 18;
+            this.st_lbl.Text = "Streets:";
+            // 
             // catalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 379);
+            this.Controls.Add(this.st_lbl);
+            this.Controls.Add(this.ci_lbl);
+            this.Controls.Add(this.co_lbl);
+            this.Controls.Add(this.s_lbl);
+            this.Controls.Add(this.pd_lbl);
+            this.Controls.Add(this.t_lbl);
+            this.Controls.Add(this.c_lbl);
+            this.Controls.Add(this.d_lbl);
             this.Controls.Add(this.oSStreetsList);
             this.Controls.Add(this.otherStoresList);
             this.Controls.Add(this.decorative_lbl);
@@ -163,5 +251,13 @@
         private System.Windows.Forms.Label decorative_lbl;
         private System.Windows.Forms.ListBox otherStoresList;
         private System.Windows.Forms.ListBox oSStreetsList;
+        private System.Windows.Forms.Label d_lbl;
+        private System.Windows.Forms.Label c_lbl;
+        private System.Windows.Forms.Label t_lbl;
+        private System.Windows.Forms.Label pd_lbl;
+        private System.Windows.Forms.Label s_lbl;
+        private System.Windows.Forms.Label co_lbl;
+        private System.Windows.Forms.Label ci_lbl;
+        private System.Windows.Forms.Label st_lbl;
     }
 }
