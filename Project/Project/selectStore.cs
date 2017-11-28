@@ -20,6 +20,7 @@ namespace Project
         public string storeCity { get; set; }
         public string storeStreet { get; set; }
         public string connectionString { get; set; }
+        public int storeID { get; set; }
 
         public selectStore()
         {
@@ -33,10 +34,16 @@ namespace Project
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
-            //igual aquí puedo meter un query para que devuelva el storeID
-            this.storeLocation = cityList.SelectedValue.ToString() + "\n" + streetList.SelectedValue.ToString();
             this.storeCity = cityList.SelectedValue.ToString();
-            this.storeStreet = streetList.SelectedValue.ToString();
+            //this.storeLocation = cityList.SelectedValue.ToString() + "\n" + streetList.SelectedValue.ToString();
+            //this.storeStreet = streetList.SelectedValue.ToString();
+
+            var selectedRow = (streetList.SelectedItem as DataRowView);
+            
+            this.storeStreet = selectedRow["street"].ToString();
+            this.storeLocation = cityList.SelectedValue.ToString() + "\n" + storeStreet;
+            this.storeID = Int32.Parse(selectedRow["store_id"].ToString());
+            
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -61,7 +68,7 @@ namespace Project
 
         private void populateStreetList()
         {
-            string query = "select street from Address inner join Store on Store.address_id = Address.address_id where city=@cityName";
+            string query = "select street,store_id from Address inner join Store on Store.address_id = Address.address_id where city=@cityName";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -72,7 +79,7 @@ namespace Project
                 adapter.Fill(streets);
 
                 streetList.DisplayMember = "street";
-                streetList.ValueMember = "street";
+                //streetList.ValueMember = "street";
                 streetList.DataSource = streets;
             }
         }

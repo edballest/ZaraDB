@@ -15,7 +15,7 @@ namespace Project
     public partial class FormMain : Form
     {
         string connectionString;
-        //string storeID;
+        int storeID;
         string storeLocation;
         string storeCity;
         string storeStreet;
@@ -35,6 +35,7 @@ namespace Project
                 var result = ss1.ShowDialog();
                 if (result == DialogResult.OK)
                 {
+                    storeID = ss1.storeID;
                     storeLocation = ss1.storeLocation;
                     storeCity = ss1.storeCity;
                     storeStreet = ss1.storeStreet;
@@ -50,6 +51,7 @@ namespace Project
             using(employeeForm eF1 = new employeeForm())
             {
                 eF1.connectionString = connectionString;
+                eF1.store_id = storeID;
                 eF1.ShowDialog();
             }
             this.Show();
