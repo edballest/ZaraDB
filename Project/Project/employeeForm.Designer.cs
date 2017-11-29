@@ -38,6 +38,7 @@
             this.filter_CB = new System.Windows.Forms.CheckBox();
             this.products_lbl = new System.Windows.Forms.Label();
             this.debug_dg = new System.Windows.Forms.DataGridView();
+            this.order_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.debug_dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,12 +139,24 @@
             this.debug_dg.ReadOnly = true;
             this.debug_dg.Size = new System.Drawing.Size(583, 231);
             this.debug_dg.TabIndex = 13;
+            this.debug_dg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.debug_dg_CellContentClick);
+            // 
+            // order_btn
+            // 
+            this.order_btn.Location = new System.Drawing.Point(536, 145);
+            this.order_btn.Name = "order_btn";
+            this.order_btn.Size = new System.Drawing.Size(156, 36);
+            this.order_btn.TabIndex = 14;
+            this.order_btn.Text = "ORDER";
+            this.order_btn.UseVisualStyleBackColor = true;
+            this.order_btn.Click += new System.EventHandler(this.order_btn_Click);
             // 
             // employeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 459);
+            this.Controls.Add(this.order_btn);
             this.Controls.Add(this.debug_dg);
             this.Controls.Add(this.products_lbl);
             this.Controls.Add(this.filter_CB);
@@ -175,5 +188,6 @@
         private System.Windows.Forms.CheckBox filter_CB;
         private System.Windows.Forms.Label products_lbl;
         private System.Windows.Forms.DataGridView debug_dg;
+        private System.Windows.Forms.Button order_btn;
     }
 }

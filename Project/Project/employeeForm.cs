@@ -38,11 +38,14 @@ namespace Project
 
             getProductTable();
             PopulateAllForms();
+
+            debug_dg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         
         private void getProductTable()
         {
+            produtcTable.Clear();
             string query = "SELECT * " +
                 "FROM product INNER JOIN category ON category.type=product.type " +
                 "INNER JOIN Inventory ON product.UPC_code = Inventory.UPC_code " +
@@ -150,11 +153,35 @@ namespace Project
 
         private void products_lb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            order_btn.Enabled = false;
+
             DataView View = new DataView(produtcTable);
             View.RowFilter = "description = '" + products_lb.SelectedValue.ToString() + "' ";
-            DataTable productInfo = View.ToTable(false, "size", "color", "price","quantity");
+            DataTable productInfo = View.ToTable(false,"UPC_code", "size", "color", "price","quantity");
 
             debug_dg.DataSource = productInfo;
+        }
+
+        private void debug_dg_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            order_btn.Enabled = true;
+            //label1.Text = debug_dg.SelectedRows[0].Cells[0].Value.ToString();
+        }
+
+        private void order_btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using (orderForm oF1 = new orderForm())
+            {
+                oF1.connectionString = this.connectionString;
+                oF1.store_id = this.store_id;
+                oF1.UPC_code= debug_dg.SelectedRows[0].Cells[0].Value.ToString();
+                oF1.currentQuantity= Int32.Parse(debug_dg.SelectedRows[0].Cells[4].Value.ToString());
+                oF1.ShowDialog();
+            }
+            getProductTable();
+            PopulateProductList();
+            this.Show();
         }
     }
 }
