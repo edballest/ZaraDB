@@ -19,6 +19,8 @@ namespace Project
         string storeLocation;
         string storeCity;
         string storeStreet;
+        public static int loggedIn;
+        public static string customer_id { get; set; }
 
         public FormMain()
         {
@@ -64,7 +66,10 @@ namespace Project
             {
                 login.connectionString = connectionString;
                 login.ShowDialog();
-                
+                loggedIn = logIn.alreadyLogIn;
+                customer_id = logIn.customer_id;
+
+
             }
 
         }
@@ -96,12 +101,22 @@ namespace Project
         private void checkOut_btn_Click(object sender, EventArgs e)
         {
             //this.Hide();
+            if (loggedIn == 1)
+            {
+                using (CheckOut checkOut = new CheckOut())
+                {
+                    checkOut.connectionString = connectionString;
+                    checkOut.customer_id = customer_id;
+                    checkOut.store_id = storeID.ToString();
+                    checkOut.ShowDialog();
+                }
+            }
+
             using (CustomerCheckOut customer = new CustomerCheckOut())
             {
                 customer.connectionString = connectionString;
                 customer.ShowDialog();
-                //need to get store_id
-                //customer.store_id=
+                customer.store_id = storeID.ToString();
 
             }
         }

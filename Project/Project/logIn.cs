@@ -21,6 +21,7 @@ namespace Project
         public string name { get; set; }
         public static string customer_id { get; set; }
         public string connectionString { get; set; }
+        public static int alreadyLogIn { get; set; }
 
         public logIn()
         {
@@ -36,6 +37,7 @@ namespace Project
         {
             if ((email_txt.Text.ToString() != "") && (pswd_txt.Text.ToString() != ""))
             {
+                alreadyLogIn = 1;
                 this.email = email_txt.Text.ToString();
                 this.password = pswd_txt.Text.ToString();
 

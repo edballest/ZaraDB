@@ -20,6 +20,7 @@ namespace Project
         public string email { get; set; }
         public string password { get; set; }
         public static string customer_id { get; set; }
+        public string store_id { get; set; }
 
         public CustomerCheckOut()
         {
@@ -34,6 +35,7 @@ namespace Project
         private void continue_btn_Click(object sender, EventArgs e)
         {
             //check if customer is already logged in
+                //add aux variable set to 1 in logIn if i login and here just check it so to skip this window?
 
             if ((email_txt.Text.ToString() != "") && (pswd_txt.Text.ToString() != ""))
             {
@@ -59,6 +61,7 @@ namespace Project
                 {
                     checkOut.connectionString = connectionString;
                     checkOut.customer_id = customer_id;
+                    checkOut.store_id = store_id;
                     checkOut.ShowDialog();
                 }
             }
@@ -72,6 +75,7 @@ namespace Project
             {
                 checkOut.connectionString = connectionString;
                 checkOut.customer_id = "1";
+                checkOut.store_id = store_id;
                 checkOut.ShowDialog();
             }
             
