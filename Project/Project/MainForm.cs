@@ -42,7 +42,7 @@ namespace Project
                 }
             }
             store_lbl.Text = storeLocation;
-            
+
         }
 
         private void employee_btn_Click(object sender, EventArgs e)

@@ -39,6 +39,7 @@
             this.products_lbl = new System.Windows.Forms.Label();
             this.debug_dg = new System.Windows.Forms.DataGridView();
             this.order_btn = new System.Windows.Forms.Button();
+            this.update_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.debug_dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,6 +134,7 @@
             this.debug_dg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.debug_dg.BackgroundColor = System.Drawing.SystemColors.Control;
             this.debug_dg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.debug_dg.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.debug_dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.debug_dg.Location = new System.Drawing.Point(179, 216);
             this.debug_dg.Name = "debug_dg";
@@ -151,11 +153,23 @@
             this.order_btn.UseVisualStyleBackColor = true;
             this.order_btn.Click += new System.EventHandler(this.order_btn_Click);
             // 
+            // update_btn
+            // 
+            this.update_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.update_btn.Location = new System.Drawing.Point(536, 96);
+            this.update_btn.Name = "update_btn";
+            this.update_btn.Size = new System.Drawing.Size(156, 36);
+            this.update_btn.TabIndex = 15;
+            this.update_btn.Text = "UPDATE";
+            this.update_btn.UseVisualStyleBackColor = true;
+            this.update_btn.Click += new System.EventHandler(this.update_btn_Click);
+            // 
             // employeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 459);
+            this.Controls.Add(this.update_btn);
             this.Controls.Add(this.order_btn);
             this.Controls.Add(this.debug_dg);
             this.Controls.Add(this.products_lbl);
@@ -167,7 +181,9 @@
             this.Controls.Add(this.category_cb);
             this.Controls.Add(this.department_lbl);
             this.Controls.Add(this.department_cb);
+            this.MaximizeBox = false;
             this.Name = "employeeForm";
+            this.ShowIcon = false;
             this.Text = "employeeForm";
             this.Load += new System.EventHandler(this.employeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.debug_dg)).EndInit();
@@ -189,5 +205,6 @@
         private System.Windows.Forms.Label products_lbl;
         private System.Windows.Forms.DataGridView debug_dg;
         private System.Windows.Forms.Button order_btn;
+        private System.Windows.Forms.Button update_btn;
     }
 }

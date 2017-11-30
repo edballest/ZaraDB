@@ -126,6 +126,12 @@
     <Compile Include="selectStore.Designer.cs">
       <DependentUpon>selectStore.cs</DependentUpon>
     </Compile>
+    <Compile Include="updateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateForm.Designer.cs">
+      <DependentUpon>updateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ZaraDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -173,12 +179,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="selectStore.resx">
       <DependentUpon>selectStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateForm.resx">
+      <DependentUpon>updateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -206,6 +216,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grupo1-imgcampaingw1.st.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

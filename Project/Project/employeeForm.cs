@@ -22,6 +22,7 @@ namespace Project
         DataTable produtcTable = new DataTable();
         enum ComboBoxes { All, Dep, Cat, Type };
 
+
         public employeeForm()
         {
             InitializeComponent();
@@ -154,6 +155,7 @@ namespace Project
         private void products_lb_SelectedIndexChanged(object sender, EventArgs e)
         {
             order_btn.Enabled = false;
+            update_btn.Enabled = false;
 
             DataView View = new DataView(produtcTable);
             View.RowFilter = "description = '" + products_lb.SelectedValue.ToString() + "' ";
@@ -165,11 +167,15 @@ namespace Project
         private void debug_dg_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             order_btn.Enabled = true;
+            update_btn.Enabled = true;
             //label1.Text = debug_dg.SelectedRows[0].Cells[0].Value.ToString();
         }
 
         private void order_btn_Click(object sender, EventArgs e)
         {
+            int products_lb_SelectedIndex;
+            products_lb_SelectedIndex=products_lb.SelectedIndex;
+
             this.Hide();
             using (orderForm oF1 = new orderForm())
             {
@@ -179,9 +185,34 @@ namespace Project
                 oF1.currentQuantity= Int32.Parse(debug_dg.SelectedRows[0].Cells[4].Value.ToString());
                 oF1.ShowDialog();
             }
+            updateProducts(products_lb_SelectedIndex);
+            this.Show();
+        }
+
+        private void update_btn_Click(object sender, EventArgs e)
+        {
+            int products_lb_SelectedIndex;
+            products_lb_SelectedIndex = products_lb.SelectedIndex;
+
+            this.Hide();
+            using (updateForm uF1 = new updateForm())
+            {
+                uF1.connectionString = this.connectionString;
+                uF1.store_id = this.store_id;
+                uF1.UPC_code = debug_dg.SelectedRows[0].Cells[0].Value.ToString();
+                uF1.currentPrice = System.Decimal.Parse(debug_dg.SelectedRows[0].Cells[3].Value.ToString());
+                uF1.currentQuantity = Int32.Parse(debug_dg.SelectedRows[0].Cells[4].Value.ToString());
+                uF1.ShowDialog();
+            }
+            updateProducts(products_lb_SelectedIndex);
+            this.Show();
+        }
+
+        private void updateProducts(int products_lb_SelectedIndex)
+        {
             getProductTable();
             PopulateProductList();
-            this.Show();
+            products_lb.SelectedIndex = products_lb_SelectedIndex;
         }
     }
 }
