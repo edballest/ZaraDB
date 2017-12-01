@@ -17,16 +17,6 @@ namespace Project
         public string connectionString;
         public string customer_id { get; set; }
         public string address_id { get; set; }
-        //string firstName;
-        //string lastName;
-        //string email;
-        //string password;
-        //string country;
-        //string city;
-        //string street;
-        //string number;
-        //string apartment;
-        //string zipCode;
 
         public ModifyProfile()
         {
@@ -45,6 +35,11 @@ namespace Project
             changeEmail();
             changePassword();
             changeCountry();
+            changeCity();
+            changeStreet();
+            changeNumber();
+            changeApt();
+            changezipCode();
         }
 
         private void populateProfile()
@@ -71,9 +66,9 @@ namespace Project
                         zipCode_lbl.Text = reader[9].ToString();
                         address_id = reader[10].ToString();
                     }
+                    reader.Close();
                 }
             }
-
         }
 
         private void changeName()
@@ -162,22 +157,122 @@ namespace Project
 
         private void changeCountry()
         {
-            //if (country_txt.Text != "")
-            //{
-            //    //Ojo hay varios customers con el mismo address_id. Si cambio uno cambio todos
-            //    string query = "update Address set country=@Country where address_id=@AddressID";
+            if (country_txt.Text != "")
+            {
+                //Ojo hay varios customers con el mismo address_id. Si cambio uno cambio todos
+                string query = "update Address set country=@Country where address_id=@AddressID";
 
-            //    using (SqlConnection connection = new SqlConnection(connectionString))
-            //    using (SqlCommand command = new SqlCommand(query, connection))
-            //    {
-            //        connection.Open();
-            //        command.Parameters.AddWithValue("@AddressID", address_id);
-            //        command.Parameters.AddWithValue("@Country", country_txt.Text);
-            //        command.ExecuteNonQuery();
-            //    }
-            //    populateProfile();
-            //    country_txt.Clear();
-            //}
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@AddressID", address_id);
+                    command.Parameters.AddWithValue("@Country", country_txt.Text);
+                    command.ExecuteNonQuery();
+                }
+                populateProfile();
+                country_txt.Clear();
+            }
+        }
+
+        private void changeCity()
+        {
+            if (city_txt.Text != "")
+            {
+                //Ojo hay varios customers con el mismo address_id. Si cambio uno cambio todos
+                string query = "update Address set city=@City where address_id=@AddressID";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@AddressID", address_id);
+                    command.Parameters.AddWithValue("@City", city_txt.Text);
+                    command.ExecuteNonQuery();
+                }
+                populateProfile();
+                city_txt.Clear();
+            }
+        }
+
+        private void changeStreet()
+        {
+            if (street_txt.Text != "")
+            {
+                //Ojo hay varios customers con el mismo address_id. Si cambio uno cambio todos
+                string query = "update Address set street=@Street where address_id=@AddressID";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@AddressID", address_id);
+                    command.Parameters.AddWithValue("@Street", street_txt.Text);
+                    command.ExecuteNonQuery();
+                }
+                populateProfile();
+                street_txt.Clear();
+            }
+        }
+
+        private void changeNumber()
+        {
+            if (number_txt.Text != "")
+            {
+                //Ojo hay varios customers con el mismo address_id. Si cambio uno cambio todos
+                string query = "update Address set number=@Number where address_id=@AddressID";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@AddressID", address_id);
+                    command.Parameters.AddWithValue("@Number", number_txt.Text);
+                    command.ExecuteNonQuery();
+                }
+                populateProfile();
+                number_txt.Clear();
+            }
+        }
+
+        private void changeApt()
+        {
+            if (apt_txt.Text != "")
+            {
+                //Ojo hay varios customers con el mismo address_id. Si cambio uno cambio todos
+                string query = "update Address set apartment=@Apartment where address_id=@AddressID";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@AddressID", address_id);
+                    command.Parameters.AddWithValue("@Apartment", apt_txt.Text);
+                    command.ExecuteNonQuery();
+                }
+                populateProfile();
+                apt_txt.Clear();
+            }
+        }
+
+        private void changezipCode()
+        {
+            if (zipCode_txt.Text != "")
+            {
+                //Ojo hay varios customers con el mismo address_id. Si cambio uno cambio todos
+                string query = "update Address set zip_code=@zipCode where address_id=@AddressID";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@AddressID", address_id);
+                    command.Parameters.AddWithValue("@zipCode", zipCode_txt.Text);
+                    command.ExecuteNonQuery();
+                }
+                populateProfile();
+                zipCode_txt.Clear();
+            }
         }
     }
 }
