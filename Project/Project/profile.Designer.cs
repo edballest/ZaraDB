@@ -56,10 +56,10 @@
             // name_lbl
             // 
             this.name_lbl.AutoSize = true;
-            this.name_lbl.Font = new System.Drawing.Font("Miriam", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.name_lbl.Location = new System.Drawing.Point(116, 25);
             this.name_lbl.Name = "name_lbl";
-            this.name_lbl.Size = new System.Drawing.Size(40, 15);
+            this.name_lbl.Size = new System.Drawing.Size(43, 17);
             this.name_lbl.TabIndex = 2;
             this.name_lbl.Text = "Name";
             // 

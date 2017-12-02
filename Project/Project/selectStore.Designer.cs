@@ -35,6 +35,7 @@
             // 
             // OK_btn
             // 
+            this.OK_btn.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK_btn.Location = new System.Drawing.Point(345, 280);
             this.OK_btn.Name = "OK_btn";
             this.OK_btn.Size = new System.Drawing.Size(167, 63);
@@ -45,19 +46,23 @@
             // 
             // cityList
             // 
+            this.cityList.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityList.FormattingEnabled = true;
+            this.cityList.ItemHeight = 18;
             this.cityList.Location = new System.Drawing.Point(44, 40);
             this.cityList.Name = "cityList";
-            this.cityList.Size = new System.Drawing.Size(212, 225);
+            this.cityList.Size = new System.Drawing.Size(212, 220);
             this.cityList.TabIndex = 2;
             this.cityList.SelectedIndexChanged += new System.EventHandler(this.cityList_SelectedIndexChanged);
             // 
             // streetList
             // 
+            this.streetList.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.streetList.FormattingEnabled = true;
+            this.streetList.ItemHeight = 18;
             this.streetList.Location = new System.Drawing.Point(300, 40);
             this.streetList.Name = "streetList";
-            this.streetList.Size = new System.Drawing.Size(212, 225);
+            this.streetList.Size = new System.Drawing.Size(212, 220);
             this.streetList.TabIndex = 3;
             this.streetList.SelectedIndexChanged += new System.EventHandler(this.streetList_SelectedIndexChanged);
             // 

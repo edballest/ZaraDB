@@ -50,25 +50,31 @@
             // 
             // departmentList
             // 
+            this.departmentList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentList.FormattingEnabled = true;
+            this.departmentList.ItemHeight = 14;
             this.departmentList.Location = new System.Drawing.Point(31, 57);
             this.departmentList.Name = "departmentList";
-            this.departmentList.Size = new System.Drawing.Size(120, 56);
+            this.departmentList.Size = new System.Drawing.Size(120, 46);
             this.departmentList.TabIndex = 0;
             this.departmentList.SelectedIndexChanged += new System.EventHandler(this.departmentList_SelectedIndexChanged);
             // 
             // categoryList
             // 
+            this.categoryList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryList.FormattingEnabled = true;
-            this.categoryList.Location = new System.Drawing.Point(31, 148);
+            this.categoryList.ItemHeight = 14;
+            this.categoryList.Location = new System.Drawing.Point(31, 155);
             this.categoryList.Name = "categoryList";
-            this.categoryList.Size = new System.Drawing.Size(120, 95);
+            this.categoryList.Size = new System.Drawing.Size(120, 88);
             this.categoryList.TabIndex = 1;
             this.categoryList.SelectedIndexChanged += new System.EventHandler(this.categoryList_SelectedIndexChanged);
             // 
             // typeList
             // 
+            this.typeList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typeList.FormattingEnabled = true;
+            this.typeList.ItemHeight = 14;
             this.typeList.Location = new System.Drawing.Point(181, 57);
             this.typeList.Name = "typeList";
             this.typeList.Size = new System.Drawing.Size(120, 186);
@@ -77,7 +83,9 @@
             // 
             // descriptionList
             // 
+            this.descriptionList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionList.FormattingEnabled = true;
+            this.descriptionList.ItemHeight = 14;
             this.descriptionList.Location = new System.Drawing.Point(339, 57);
             this.descriptionList.Name = "descriptionList";
             this.descriptionList.Size = new System.Drawing.Size(120, 186);
@@ -87,124 +95,142 @@
             // price_lbl
             // 
             this.price_lbl.AutoSize = true;
-            this.price_lbl.Location = new System.Drawing.Point(178, 271);
+            this.price_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.price_lbl.Location = new System.Drawing.Point(114, 271);
             this.price_lbl.Name = "price_lbl";
-            this.price_lbl.Size = new System.Drawing.Size(31, 13);
+            this.price_lbl.Size = new System.Drawing.Size(37, 17);
             this.price_lbl.TabIndex = 4;
             this.price_lbl.Text = "Price";
             // 
             // sizesList
             // 
+            this.sizesList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sizesList.FormattingEnabled = true;
+            this.sizesList.ItemHeight = 14;
             this.sizesList.Location = new System.Drawing.Point(488, 57);
             this.sizesList.Name = "sizesList";
-            this.sizesList.Size = new System.Drawing.Size(120, 69);
+            this.sizesList.Size = new System.Drawing.Size(120, 60);
             this.sizesList.TabIndex = 6;
             this.sizesList.SelectedIndexChanged += new System.EventHandler(this.sizesList_SelectedIndexChanged);
             // 
             // colorList
             // 
+            this.colorList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorList.FormattingEnabled = true;
-            this.colorList.Location = new System.Drawing.Point(488, 148);
+            this.colorList.ItemHeight = 14;
+            this.colorList.Location = new System.Drawing.Point(488, 155);
             this.colorList.Name = "colorList";
-            this.colorList.Size = new System.Drawing.Size(120, 95);
+            this.colorList.Size = new System.Drawing.Size(120, 88);
             this.colorList.TabIndex = 7;
             this.colorList.SelectedIndexChanged += new System.EventHandler(this.colorList_SelectedIndexChanged);
             // 
             // decorative_lbl
             // 
             this.decorative_lbl.AutoSize = true;
-            this.decorative_lbl.Location = new System.Drawing.Point(229, 271);
+            this.decorative_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.decorative_lbl.Location = new System.Drawing.Point(178, 271);
             this.decorative_lbl.Name = "decorative_lbl";
-            this.decorative_lbl.Size = new System.Drawing.Size(0, 13);
+            this.decorative_lbl.Size = new System.Drawing.Size(0, 17);
             this.decorative_lbl.TabIndex = 8;
             // 
             // otherStoresList
             // 
+            this.otherStoresList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otherStoresList.FormattingEnabled = true;
+            this.otherStoresList.ItemHeight = 14;
             this.otherStoresList.Location = new System.Drawing.Point(339, 271);
             this.otherStoresList.Name = "otherStoresList";
-            this.otherStoresList.Size = new System.Drawing.Size(120, 95);
+            this.otherStoresList.Size = new System.Drawing.Size(120, 88);
             this.otherStoresList.TabIndex = 9;
             this.otherStoresList.SelectedIndexChanged += new System.EventHandler(this.otherStoresList_SelectedIndexChanged);
             // 
             // oSStreetsList
             // 
+            this.oSStreetsList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oSStreetsList.FormattingEnabled = true;
+            this.oSStreetsList.ItemHeight = 14;
             this.oSStreetsList.Location = new System.Drawing.Point(479, 271);
             this.oSStreetsList.Name = "oSStreetsList";
-            this.oSStreetsList.Size = new System.Drawing.Size(120, 95);
+            this.oSStreetsList.Size = new System.Drawing.Size(120, 88);
             this.oSStreetsList.TabIndex = 10;
             // 
             // d_lbl
             // 
             this.d_lbl.AutoSize = true;
+            this.d_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d_lbl.Location = new System.Drawing.Point(31, 38);
             this.d_lbl.Name = "d_lbl";
-            this.d_lbl.Size = new System.Drawing.Size(70, 13);
+            this.d_lbl.Size = new System.Drawing.Size(93, 17);
             this.d_lbl.TabIndex = 11;
             this.d_lbl.Text = "Departments:";
             // 
             // c_lbl
             // 
             this.c_lbl.AutoSize = true;
-            this.c_lbl.Location = new System.Drawing.Point(31, 132);
+            this.c_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c_lbl.Location = new System.Drawing.Point(31, 128);
             this.c_lbl.Name = "c_lbl";
-            this.c_lbl.Size = new System.Drawing.Size(60, 13);
+            this.c_lbl.Size = new System.Drawing.Size(77, 17);
             this.c_lbl.TabIndex = 12;
             this.c_lbl.Text = "Categories:";
             // 
             // t_lbl
             // 
             this.t_lbl.AutoSize = true;
+            this.t_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_lbl.Location = new System.Drawing.Point(178, 38);
             this.t_lbl.Name = "t_lbl";
-            this.t_lbl.Size = new System.Drawing.Size(34, 13);
+            this.t_lbl.Size = new System.Drawing.Size(44, 17);
             this.t_lbl.TabIndex = 13;
             this.t_lbl.Text = "Type:";
             // 
             // pd_lbl
             // 
             this.pd_lbl.AutoSize = true;
+            this.pd_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pd_lbl.Location = new System.Drawing.Point(336, 38);
             this.pd_lbl.Name = "pd_lbl";
-            this.pd_lbl.Size = new System.Drawing.Size(103, 13);
+            this.pd_lbl.Size = new System.Drawing.Size(134, 17);
             this.pd_lbl.TabIndex = 14;
             this.pd_lbl.Text = "Product Description:";
             // 
             // s_lbl
             // 
             this.s_lbl.AutoSize = true;
+            this.s_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.s_lbl.Location = new System.Drawing.Point(485, 38);
             this.s_lbl.Name = "s_lbl";
-            this.s_lbl.Size = new System.Drawing.Size(30, 13);
+            this.s_lbl.Size = new System.Drawing.Size(36, 17);
             this.s_lbl.TabIndex = 15;
             this.s_lbl.Text = "Size:";
             // 
             // co_lbl
             // 
             this.co_lbl.AutoSize = true;
-            this.co_lbl.Location = new System.Drawing.Point(485, 132);
+            this.co_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.co_lbl.Location = new System.Drawing.Point(485, 128);
             this.co_lbl.Name = "co_lbl";
-            this.co_lbl.Size = new System.Drawing.Size(34, 13);
+            this.co_lbl.Size = new System.Drawing.Size(45, 17);
             this.co_lbl.TabIndex = 16;
             this.co_lbl.Text = "Color:";
             // 
             // ci_lbl
             // 
             this.ci_lbl.AutoSize = true;
-            this.ci_lbl.Location = new System.Drawing.Point(336, 255);
+            this.ci_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ci_lbl.Location = new System.Drawing.Point(336, 251);
             this.ci_lbl.Name = "ci_lbl";
-            this.ci_lbl.Size = new System.Drawing.Size(35, 13);
+            this.ci_lbl.Size = new System.Drawing.Size(44, 17);
             this.ci_lbl.TabIndex = 17;
             this.ci_lbl.Text = "Cities:";
             // 
             // st_lbl
             // 
             this.st_lbl.AutoSize = true;
-            this.st_lbl.Location = new System.Drawing.Point(476, 255);
+            this.st_lbl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.st_lbl.Location = new System.Drawing.Point(476, 251);
             this.st_lbl.Name = "st_lbl";
-            this.st_lbl.Size = new System.Drawing.Size(43, 13);
+            this.st_lbl.Size = new System.Drawing.Size(56, 17);
             this.st_lbl.TabIndex = 18;
             this.st_lbl.Text = "Streets:";
             // 

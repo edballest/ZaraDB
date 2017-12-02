@@ -45,27 +45,33 @@ namespace Project
 
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(query, connection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
                     connection.Open();
                     command.Parameters.AddWithValue("@email", this.email);
                     command.Parameters.AddWithValue("@password", this.password);
-                    customer_id = command.ExecuteScalar().ToString();
-                    connection.Close();
-                }
+                    
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            customer_id = reader[0].ToString();
+                            this.Hide();
 
-                this.Hide();
-
-                using (profile profile = new profile())
-                {
-                    profile.connectionString = connectionString;
-                    profile.customer_id = customer_id;
-                    profile.ShowDialog();
+                            using (profile profile = new profile())
+                            {
+                                profile.connectionString = connectionString;
+                                profile.customer_id = customer_id;
+                                profile.ShowDialog();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid email or password");
+                        }
+                        reader.Close();
+                    }
                 }
             }
-
-
-
         }
 
         private void back_btn_Click(object sender, EventArgs e)

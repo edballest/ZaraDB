@@ -165,17 +165,21 @@ namespace Project
                         price_lbl.Text = reader[0].ToString();
                         decorative_lbl.Text = "$";
                         check = "OK";
+                        ci_lbl.Hide();
+                        st_lbl.Hide();
 
                         otherStoresList.Hide();
                         oSStreetsList.Hide();
-
                     }
                     else
                     {
                         price_lbl.Text = "Item not available in this store try: ";
                         decorative_lbl.Text = "";
+                        ci_lbl.Show();
+                        st_lbl.Show();
                         check = "NO";
                     }
+                    reader.Close();
                 }
                
             }
