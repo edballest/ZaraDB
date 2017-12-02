@@ -68,8 +68,6 @@ namespace Project
                 login.ShowDialog();
                 loggedIn = logIn.alreadyLogIn;
                 customer_id = logIn.customer_id;
-
-
             }
 
         }
@@ -107,17 +105,20 @@ namespace Project
                 {
                     checkOut.connectionString = connectionString;
                     checkOut.customer_id = customer_id;
-                    checkOut.store_id = storeID.ToString();
+                    checkOut.store_id = storeID.ToString(); //Change it to int?
                     checkOut.ShowDialog();
                 }
             }
-
-            using (CustomerCheckOut customer = new CustomerCheckOut())
+            else
             {
-                customer.connectionString = connectionString;
-                customer.ShowDialog();
-                customer.store_id = storeID.ToString();
 
+                using (CustomerCheckOut customer = new CustomerCheckOut())
+                {
+                    customer.connectionString = connectionString;
+                    customer.ShowDialog();
+                    customer.store_id = storeID.ToString();
+
+                }
             }
         }
     }

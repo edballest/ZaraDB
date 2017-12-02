@@ -29,14 +29,11 @@ namespace Project
 
         private void CustomerCheckOut_Load(object sender, EventArgs e)
         {
-
+            pswd_txt.PasswordChar = '*';
         }
 
         private void continue_btn_Click(object sender, EventArgs e)
         {
-            //check if customer is already logged in
-                //add aux variable set to 1 in logIn if i login and here just check it so to skip this window?
-
             if ((email_txt.Text.ToString() != "") && (pswd_txt.Text.ToString() != ""))
             {
                 this.email = email_txt.Text.ToString();
@@ -46,13 +43,23 @@ namespace Project
 
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(query, connection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
                     connection.Open();
                     command.Parameters.AddWithValue("@email", this.email);
                     command.Parameters.AddWithValue("@password", this.password);
-                    customer_id = command.ExecuteScalar().ToString();
-                    connection.Close();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            customer_id = reader[0].ToString();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid email or password");
+                        }
+                        reader.Close();
+                    }
                 }
 
                 this.Hide();
@@ -78,7 +85,6 @@ namespace Project
                 checkOut.store_id = store_id;
                 checkOut.ShowDialog();
             }
-            
         }
     }
 }

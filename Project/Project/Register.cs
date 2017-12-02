@@ -63,8 +63,7 @@ namespace Project
                         }
                         command.ExecuteNonQuery();
                     }
-
-                    //PILLAR ADDRESS_iD
+                    
                     string query2 = "select address_id from Address where country=@Country and city=@City and street=@Street";
 
                     using (SqlConnection connection2 = new SqlConnection(connectionString))

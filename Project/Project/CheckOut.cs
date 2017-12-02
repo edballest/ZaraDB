@@ -14,10 +14,8 @@ namespace Project
 {
     public partial class CheckOut : Form
     {
-        SqlConnection connection;
-
         public string connectionString { get; set; }    
-        public string customer_id { get; set; }             //be careful because it's a string and in table it's an int
+        public string customer_id { get; set; }      //be careful because it's a string and in table it's an int
         public string store_id { get; set; }
         string upcCode;
         string qty;
