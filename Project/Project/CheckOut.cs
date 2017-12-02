@@ -32,7 +32,9 @@ namespace Project
 
         private void CheckOut_Load(object sender, EventArgs e)
         {
-            
+            total_lbl.Hide();
+            decor_lbl.Hide();
+            itemsList.Hide();
             if (customer_id != "1")
             {
                 string query = "select first_name from Customer where customer_id=@customer_id";
@@ -80,25 +82,17 @@ namespace Project
         {
             if ((upcCode_txt.Text.ToString() != "") && (qty_txt.Text.ToString() != ""))
             {
-                number = Int32.Parse(qty_txt.Text);
-                this.upcCode = upcCode_txt.Text.ToString();
                 NewItem();
-                //this.qty = qty_txt.Text.ToString();
+                itemsList.Show();
+                itemsList.Items.Add(upcCode_txt.Text);
+
+                //METER UN ARRAY DINAMICO QUE GUARDE LA CANTIDAD DE PRODUCTO
+                //METER AQUÍ LAS TRANSACTIONS -> HAY QUE MODIFICAR LA DB
 
                 //add that product to bag & update stuff in DB or what?
 
-                //string query = "";
-
-                //using (SqlConnection connection = new SqlConnection(connectionString))
-                //using (SqlCommand command = new SqlCommand(query, connection))
-                //{
-                //    connection.Open();
-                //    command.Parameters.AddWithValue("@upc", upcCode_txt.Text);
-                //    command.Parameters.AddWithValue("@qty", qty_txt.Text);
-                //    this.name = command.ExecuteScalar().ToString();
-                //    command.ExecuteNonQuery();
-                //}
-
+                //DateTime myDateTime = DateTime.Now;
+                //string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
                 //delete text in UPC & qty txt boxes so i can put new ones
                 upcCode_txt.Clear();
@@ -115,7 +109,7 @@ namespace Project
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@UPC_code", upcCode_txt.Text);
-                command.Parameters.AddWithValue("@Store_id", store_id.ToString());
+                command.Parameters.AddWithValue("@Store_id", store_id);
                 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -123,13 +117,18 @@ namespace Project
                     {
                         quantity = Int32.Parse(reader[0].ToString());
                         price = Double.Parse(reader[1].ToString());
+                        number = Int32.Parse(qty_txt.Text);
+                        this.upcCode = upcCode_txt.Text.ToString();
                     }
+                    else MessageBox.Show("Incorrect UPC_code!");
                     reader.Close();
                 }
             }
 
             if (number < quantity)
             {
+                total_lbl.Show();
+                decor_lbl.Show();
                 total = number * price + total;
                 total_lbl.Text = total.ToString();
             }

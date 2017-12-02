@@ -8,4 +8,13 @@ Credit Card: 532873026178
 
 Address: sjdakdmas
 
+Store:
+Springfield (store_id=2)
+UPC_code=11410579805blk
+price=55,3400
+quantity=43
+
+UPC_code=11410579805cam
+price=62,2100
+quantity=58
   

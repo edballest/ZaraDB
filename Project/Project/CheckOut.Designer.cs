@@ -38,6 +38,7 @@
             this.total_lbl = new System.Windows.Forms.Label();
             this.decor_lbl = new System.Windows.Forms.Label();
             this.tot_lbl = new System.Windows.Forms.Label();
+            this.itemsList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // checkOut_btn
@@ -108,7 +109,7 @@
             this.total_lbl.Name = "total_lbl";
             this.total_lbl.Size = new System.Drawing.Size(31, 13);
             this.total_lbl.TabIndex = 7;
-            this.total_lbl.Text = "Total";
+            this.total_lbl.Text = "Price";
             // 
             // decor_lbl
             // 
@@ -128,11 +129,20 @@
             this.tot_lbl.TabIndex = 9;
             this.tot_lbl.Text = "Total";
             // 
+            // itemsList
+            // 
+            this.itemsList.FormattingEnabled = true;
+            this.itemsList.Location = new System.Drawing.Point(12, 124);
+            this.itemsList.Name = "itemsList";
+            this.itemsList.Size = new System.Drawing.Size(100, 95);
+            this.itemsList.TabIndex = 10;
+            // 
             // CheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.itemsList);
             this.Controls.Add(this.tot_lbl);
             this.Controls.Add(this.decor_lbl);
             this.Controls.Add(this.total_lbl);
@@ -163,5 +173,6 @@
         private System.Windows.Forms.Label total_lbl;
         private System.Windows.Forms.Label decor_lbl;
         private System.Windows.Forms.Label tot_lbl;
+        private System.Windows.Forms.ListBox itemsList;
     }
 }
