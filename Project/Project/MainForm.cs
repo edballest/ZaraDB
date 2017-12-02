@@ -105,7 +105,7 @@ namespace Project
                 {
                     checkOut.connectionString = connectionString;
                     checkOut.customer_id = customer_id;
-                    checkOut.store_id = storeID.ToString(); //Change it to int?
+                    checkOut.store_id = storeID; 
                     checkOut.ShowDialog();
                 }
             }
@@ -115,9 +115,8 @@ namespace Project
                 using (CustomerCheckOut customer = new CustomerCheckOut())
                 {
                     customer.connectionString = connectionString;
+                    customer.store_id = storeID;
                     customer.ShowDialog();
-                    customer.store_id = storeID.ToString();
-
                 }
             }
         }

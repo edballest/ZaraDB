@@ -16,10 +16,14 @@ namespace Project
     {
         public string connectionString { get; set; }    
         public string customer_id { get; set; }      //be careful because it's a string and in table it's an int
-        public string store_id { get; set; }
+        public int store_id { get; set; }
         string upcCode;
         string qty;
         string name;
+        int quantity;
+        double total=0;
+        double price;
+        int number = 0;
 
         public CheckOut()
         {
@@ -28,6 +32,7 @@ namespace Project
 
         private void CheckOut_Load(object sender, EventArgs e)
         {
+            
             if (customer_id != "1")
             {
                 string query = "select first_name from Customer where customer_id=@customer_id";
@@ -75,28 +80,60 @@ namespace Project
         {
             if ((upcCode_txt.Text.ToString() != "") && (qty_txt.Text.ToString() != ""))
             {
-                //this.upcCode = upcCode_txt.Text.ToString();
+                number = Int32.Parse(qty_txt.Text);
+                this.upcCode = upcCode_txt.Text.ToString();
+                NewItem();
                 //this.qty = qty_txt.Text.ToString();
 
                 //add that product to bag & update stuff in DB or what?
 
-                string query = "";
+                //string query = "";
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    connection.Open();
-                    command.Parameters.AddWithValue("@upc", upcCode_txt.Text);
-                    command.Parameters.AddWithValue("@qty", qty_txt.Text);
-                    this.name = command.ExecuteScalar().ToString();
-                    command.ExecuteNonQuery();
-                }
+                //using (SqlConnection connection = new SqlConnection(connectionString))
+                //using (SqlCommand command = new SqlCommand(query, connection))
+                //{
+                //    connection.Open();
+                //    command.Parameters.AddWithValue("@upc", upcCode_txt.Text);
+                //    command.Parameters.AddWithValue("@qty", qty_txt.Text);
+                //    this.name = command.ExecuteScalar().ToString();
+                //    command.ExecuteNonQuery();
+                //}
 
 
                 //delete text in UPC & qty txt boxes so i can put new ones
                 upcCode_txt.Clear();
                 qty_txt.Clear();
             }
+        }
+
+        private void NewItem()
+        {
+            string query = "select quantity, price from Inventory where UPC_code=@UPC_code and store_id=@Store_id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@UPC_code", upcCode_txt.Text);
+                command.Parameters.AddWithValue("@Store_id", store_id.ToString());
+                
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        quantity = Int32.Parse(reader[0].ToString());
+                        price = Double.Parse(reader[1].ToString());
+                    }
+                    reader.Close();
+                }
+            }
+
+            if (number < quantity)
+            {
+                total = number * price + total;
+                total_lbl.Text = total.ToString();
+            }
+            else MessageBox.Show("Please select another quantity");
         }
     }
 }

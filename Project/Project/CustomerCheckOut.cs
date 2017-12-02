@@ -20,7 +20,7 @@ namespace Project
         public string email { get; set; }
         public string password { get; set; }
         public static string customer_id { get; set; }
-        public string store_id { get; set; }
+        public int store_id { get; set; }
 
         public CustomerCheckOut()
         {
