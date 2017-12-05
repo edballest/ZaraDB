@@ -82,6 +82,12 @@
     <Compile Include="employeeForm.Designer.cs">
       <DependentUpon>employeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="insertCreditCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="insertCreditCardForm.Designer.cs">
+      <DependentUpon>insertCreditCardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="logIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="employeeForm.resx">
       <DependentUpon>employeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="insertCreditCardForm.resx">
+      <DependentUpon>insertCreditCardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>

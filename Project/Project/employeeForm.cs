@@ -30,7 +30,6 @@ namespace Project
 
         private void employeeForm_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(store_id.ToString());
             department_lbl.Enabled = false;
             department_cb.Enabled = false;
             category_lbl.Enabled = false;

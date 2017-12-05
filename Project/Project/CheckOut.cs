@@ -196,6 +196,18 @@ namespace Project
 
                 DataTable creditCards = new DataTable();
                 adapter.Fill(creditCards);
+
+                if (creditCards.Rows.Count==0)
+                {
+                    using (insertCreditCardForm iCC1 = new insertCreditCardForm())
+                    {
+                        var result = iCC1.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            creditCards.Rows.Add(iCC1.credit_card_number);
+                        }
+                    }
+                }
                 creditCardCB.DisplayMember = "number";
                 creditCardCB.ValueMember = "number";
                 creditCardCB.DataSource = creditCards;
