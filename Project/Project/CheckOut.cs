@@ -17,13 +17,11 @@ namespace Project
         public string connectionString { get; set; }    
         public string customer_id { get; set; }      //be careful because it's a string and in table it's an int
         public int store_id { get; set; }
-        string upcCode;
         string qty;
         string name;
-        int quantity;
+        DataTable cart;
         double total=0;
         double price;
-        int number = 0;
 
         public CheckOut()
         {
@@ -34,7 +32,16 @@ namespace Project
         {
             total_lbl.Hide();
             decor_lbl.Hide();
-            itemsList.Hide();
+            checkOut_btn.Enabled = false;
+
+            cart = new DataTable();
+            cart.Columns.Add("UPC_code", typeof(string));
+            cart.Columns.Add("quantity", typeof(int));
+            cart.Columns.Add("inStock", typeof(int));
+            itemsList.DisplayMember = "UPC_code";
+
+            populateCreditCardList();
+            
             if (customer_id != "1")
             {
                 string query = "select first_name from Customer where customer_id=@customer_id";
@@ -57,25 +64,52 @@ namespace Project
 
         private void checkOut_btn_Click(object sender, EventArgs e)
         {
-                //for now i'm only putting one but it's going to need to be a list for the several txt boxes
-                this.upcCode = upcCode_txt.Text.ToString();
-                this.qty = qty_txt.Text.ToString();
+            int quantity;
+            int remaining;
+            string UPC_code;
 
-                //i'm also gonna need credit_card number (need to modify SCHEMA and DB ---> OMG!!)
+            foreach (DataRow row in cart.Rows)
+            {
+                quantity = Int32.Parse(row["quantity"].ToString());
+                remaining = Int32.Parse(row["inStock"].ToString()) - quantity;
+                UPC_code = row["UPC_code"].ToString();
 
-
-                this.Hide();
-
-                using (ChooseCreditCard chooseCC = new ChooseCreditCard())
+                using (SqlConnection connection = new SqlConnection(this.connectionString))
                 {
-                    chooseCC.connectionString = connectionString;
-                    chooseCC.customer_id = customer_id;
-                    chooseCC.upcCode = upcCode;
-                    chooseCC.qty = qty;
-                    chooseCC.ShowDialog();
+                    SqlDataAdapter adapter1 = new SqlDataAdapter();
+                    SqlDataAdapter adapter2 = new SqlDataAdapter();
+
+                    adapter1.UpdateCommand = new SqlCommand("UPDATE Inventory SET quantity=@newQuantity " +
+                        "WHERE store_id=@storeID and UPC_code=@UPC_code", connection);
+
+
+                    adapter1.UpdateCommand.Parameters.AddWithValue("@newQuantity", remaining);
+                    adapter1.UpdateCommand.Parameters.AddWithValue("@storeID", this.store_id);
+                    adapter1.UpdateCommand.Parameters.AddWithValue("@UPC_code", UPC_code);
+
+                    connection.Open();
+                    adapter1.UpdateCommand.ExecuteNonQuery();
+
+                    adapter2.UpdateCommand = new SqlCommand("INSERT INTO Transactions" +
+                        " VALUES(@UPC_code,@customerID,@storeID,@quantity,@date_time)", connection);
+
+                    adapter2.UpdateCommand.Parameters.AddWithValue("@newQuantity", remaining);
+
+                    adapter2.UpdateCommand.Parameters.AddWithValue("@UPC_code", UPC_code);
+                    adapter2.UpdateCommand.Parameters.AddWithValue("@customerID", this.customer_id);
+                    adapter2.UpdateCommand.Parameters.AddWithValue("@storeID", this.store_id);
+                    adapter2.UpdateCommand.Parameters.AddWithValue("@quantity", quantity );
+                    adapter2.UpdateCommand.Parameters.AddWithValue("@date_time", System.DateTime.Now);
+
+                    adapter2.UpdateCommand.ExecuteNonQuery();
+
+                    MessageBox.Show("THANK YOU FOR" + "\n" + "   SHOPPING AT" + "\n" + "          ZARA");
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
 
-            
+            }
         }
 
         private void add_btn_Click(object sender, EventArgs e)
@@ -83,8 +117,7 @@ namespace Project
             if ((upcCode_txt.Text.ToString() != "") && (qty_txt.Text.ToString() != ""))
             {
                 NewItem();
-                itemsList.Show();
-                itemsList.Items.Add(upcCode_txt.Text);
+                
 
                 //METER UN ARRAY DINAMICO QUE GUARDE LA CANTIDAD DE PRODUCTO
                 //METER AQUÍ LAS TRANSACTIONS -> HAY QUE MODIFICAR LA DB
@@ -102,6 +135,10 @@ namespace Project
 
         private void NewItem()
         {
+            int inStock;
+            int quantity;
+            string UPC_code;
+
             string query = "select quantity, price from Inventory where UPC_code=@UPC_code and store_id=@Store_id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -115,24 +152,59 @@ namespace Project
                 {
                     if (reader.Read())
                     {
-                        quantity = Int32.Parse(reader[0].ToString());
+                        inStock = Int32.Parse(reader[0].ToString());
                         price = Double.Parse(reader[1].ToString());
-                        number = Int32.Parse(qty_txt.Text);
-                        this.upcCode = upcCode_txt.Text.ToString();
+                        quantity = Int32.Parse(qty_txt.Text);
+                        UPC_code = upcCode_txt.Text.ToString();
+
+                        if (quantity <= inStock)
+                        {
+                            total_lbl.Show();
+                            decor_lbl.Show();
+                            checkOut_btn.Enabled = true;
+                            total = quantity * price + total;
+                            total_lbl.Text = total.ToString();
+                            cart.Rows.Add(UPC_code, quantity, inStock);
+
+                            updateItemList();
+                        }
+                        else MessageBox.Show("NOT ENOUGH ITEMS IN STOCK\nPLEASE SELECT A LOWER QUANTITY"
+                                                    , "NOT ENOUGH ITEMS IN STOCK", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else MessageBox.Show("Incorrect UPC_code!");
+                    else MessageBox.Show("OBJECT UPC_CODE NOT RECOGNISED"
+                                        ,"INCORRECT UPC_CODE", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     reader.Close();
                 }
             }
+        }
 
-            if (number < quantity)
+        private void updateItemList()
+        {
+            itemsList.DataSource = cart;
+        }
+        private void populateCreditCardList()
+        {
+            string query = "select number from Credit_Card inner join Customer on Customer.customer_id = Credit_Card.customer_id " +
+                "where Credit_Card.customer_id=@customer_id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                total_lbl.Show();
-                decor_lbl.Show();
-                total = number * price + total;
-                total_lbl.Text = total.ToString();
+                //connection.Open();
+                command.Parameters.AddWithValue("@customer_id", this.customer_id);
+                // connection.Close();
+
+                DataTable creditCards = new DataTable();
+                adapter.Fill(creditCards);
+                creditCardCB.DisplayMember = "number";
+                creditCardCB.ValueMember = "number";
+                creditCardCB.DataSource = creditCards;
             }
-            else MessageBox.Show("Please select another quantity");
+        }
+
+        private void itemsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

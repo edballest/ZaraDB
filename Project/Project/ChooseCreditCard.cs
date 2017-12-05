@@ -44,14 +44,15 @@ namespace Project
 
         private void populateCreditCardList()
         {
-            string query = "select number from Credit_Card inner join Customer on Customer.customer_id = Credit_Card.customer_id where Credit_Card.customer_id=@customer_id";
+            string query = "select number from Credit_Card inner join Customer on Customer.customer_id = Credit_Card.customer_id " +
+                "where Credit_Card.customer_id=@customer_id";
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                connection.Open();
+                //connection.Open();
                 command.Parameters.AddWithValue("@customer_id", customer_id);
-                connection.Close();
+               // connection.Close();
 
                 DataTable creditCards = new DataTable();
                 adapter.Fill(creditCards);

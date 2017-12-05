@@ -39,11 +39,13 @@
             this.decor_lbl = new System.Windows.Forms.Label();
             this.tot_lbl = new System.Windows.Forms.Label();
             this.itemsList = new System.Windows.Forms.ListBox();
+            this.creditCard_lbl = new System.Windows.Forms.Label();
+            this.creditCardCB = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // checkOut_btn
             // 
-            this.checkOut_btn.Location = new System.Drawing.Point(164, 226);
+            this.checkOut_btn.Location = new System.Drawing.Point(163, 223);
             this.checkOut_btn.Name = "checkOut_btn";
             this.checkOut_btn.Size = new System.Drawing.Size(108, 23);
             this.checkOut_btn.TabIndex = 0;
@@ -105,7 +107,7 @@
             // total_lbl
             // 
             this.total_lbl.AutoSize = true;
-            this.total_lbl.Location = new System.Drawing.Point(194, 179);
+            this.total_lbl.Location = new System.Drawing.Point(64, 223);
             this.total_lbl.Name = "total_lbl";
             this.total_lbl.Size = new System.Drawing.Size(31, 13);
             this.total_lbl.TabIndex = 7;
@@ -114,7 +116,7 @@
             // decor_lbl
             // 
             this.decor_lbl.AutoSize = true;
-            this.decor_lbl.Location = new System.Drawing.Point(251, 179);
+            this.decor_lbl.Location = new System.Drawing.Point(121, 223);
             this.decor_lbl.Name = "decor_lbl";
             this.decor_lbl.Size = new System.Drawing.Size(13, 13);
             this.decor_lbl.TabIndex = 8;
@@ -123,7 +125,7 @@
             // tot_lbl
             // 
             this.tot_lbl.AutoSize = true;
-            this.tot_lbl.Location = new System.Drawing.Point(148, 179);
+            this.tot_lbl.Location = new System.Drawing.Point(18, 223);
             this.tot_lbl.Name = "tot_lbl";
             this.tot_lbl.Size = new System.Drawing.Size(31, 13);
             this.tot_lbl.TabIndex = 9;
@@ -132,16 +134,37 @@
             // itemsList
             // 
             this.itemsList.FormattingEnabled = true;
-            this.itemsList.Location = new System.Drawing.Point(12, 124);
+            this.itemsList.Location = new System.Drawing.Point(12, 108);
             this.itemsList.Name = "itemsList";
+            this.itemsList.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.itemsList.Size = new System.Drawing.Size(100, 95);
             this.itemsList.TabIndex = 10;
+            this.itemsList.SelectedIndexChanged += new System.EventHandler(this.itemsList_SelectedIndexChanged);
+            // 
+            // creditCard_lbl
+            // 
+            this.creditCard_lbl.AutoSize = true;
+            this.creditCard_lbl.Location = new System.Drawing.Point(134, 157);
+            this.creditCard_lbl.Name = "creditCard_lbl";
+            this.creditCard_lbl.Size = new System.Drawing.Size(87, 13);
+            this.creditCard_lbl.TabIndex = 12;
+            this.creditCard_lbl.Text = "CREDIT CARDS";
+            // 
+            // creditCardCB
+            // 
+            this.creditCardCB.FormattingEnabled = true;
+            this.creditCardCB.Location = new System.Drawing.Point(137, 182);
+            this.creditCardCB.Name = "creditCardCB";
+            this.creditCardCB.Size = new System.Drawing.Size(134, 21);
+            this.creditCardCB.TabIndex = 13;
             // 
             // CheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(288, 257);
+            this.Controls.Add(this.creditCardCB);
+            this.Controls.Add(this.creditCard_lbl);
             this.Controls.Add(this.itemsList);
             this.Controls.Add(this.tot_lbl);
             this.Controls.Add(this.decor_lbl);
@@ -174,5 +197,7 @@
         private System.Windows.Forms.Label decor_lbl;
         private System.Windows.Forms.Label tot_lbl;
         private System.Windows.Forms.ListBox itemsList;
+        private System.Windows.Forms.Label creditCard_lbl;
+        private System.Windows.Forms.ComboBox creditCardCB;
     }
 }
