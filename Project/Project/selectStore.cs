@@ -30,7 +30,8 @@ namespace Project
         private void selectStore_Load(object sender, EventArgs e)
         {
             populateCityList();
-        }
+            
+    }
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
