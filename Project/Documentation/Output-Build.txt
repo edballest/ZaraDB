@@ -1,0 +1,13 @@
+﻿1>------ Build started: Project: Project, Configuration: Debug Any CPU ------
+1>D:\Users\Edu\Documents\CodeRepository\ZaraDB\Project\Project\ChooseCreditCard.cs(17,23,17,33): warning CS0169: The field 'ChooseCreditCard.connection' is never used
+1>D:\Users\Edu\Documents\CodeRepository\ZaraDB\Project\Project\CheckOut.cs(20,16,20,19): warning CS0169: The field 'CheckOut.qty' is never used
+1>D:\Users\Edu\Documents\CodeRepository\ZaraDB\Project\Project\ChooseCreditCard.cs(23,16,23,25): warning CS0169: The field 'ChooseCreditCard.date_time' is never used
+1>  Project -> D:\Users\Edu\Documents\CodeRepository\ZaraDB\Project\Project\bin\Debug\Project.exe
+Building Project...
+2>------ Publish started: Project: Project, Configuration: Debug Any CPU ------
+Connecting to 'c:\publish\ZaraDB\'...
+Publishing files...
+Publish success.
+c:\publish\ZaraDB\
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Publish: 1 succeeded, 0 failed, 0 skipped ==========

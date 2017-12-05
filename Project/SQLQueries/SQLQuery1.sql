@@ -1,0 +1,1 @@
+﻿select * from Credit_Card where customer_id=1
