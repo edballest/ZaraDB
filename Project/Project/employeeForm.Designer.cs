@@ -145,6 +145,8 @@
             // 
             // order_btn
             // 
+            this.order_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.order_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.order_btn.Location = new System.Drawing.Point(536, 145);
             this.order_btn.Name = "order_btn";
             this.order_btn.Size = new System.Drawing.Size(156, 36);
@@ -155,6 +157,7 @@
             // 
             // update_btn
             // 
+            this.update_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.update_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_btn.Location = new System.Drawing.Point(536, 96);
             this.update_btn.Name = "update_btn";
